@@ -15,6 +15,7 @@ Bundle 'ervandew/supertab'
 Bundle 'groenewege/vim-less'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
 Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'nosami/Omnisharp'
 Bundle 'scrooloose/syntastic'
@@ -179,6 +180,9 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+" Tagbar
+nmap <Leader>tb :TagbarToggle<CR>
+
 " sort lines
 nmap <Leader>so :%!sort -u<CR>
 
@@ -198,20 +202,11 @@ nmap <Leader>li :set list!<CR>
 nmap <Leader>td :e ++ff=dos<CR>
 
 " strip whitespace
-nmap <f5> :call StripTrailingWhitespace()<CR>
 nmap <Leader>ss :call StripTrailingWhitespace()<CR>
 function! StripTrailingWhitespace()
     %s/[ \t]\+$//ge
     %s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
 endfunction
-
-" minibufexpl
-let g:miniBufExplTabWrap = 1
-let g:miniBufExplMaxSize = 1
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
 
 " indent guides
 let g:indent_guides_start_level=2
@@ -225,6 +220,7 @@ let g:airline_right_sep=''
 " let g:airline_theme='solarized'
 let g:airline_powerline_fonts=0
 let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
 
 " OMNISHARP
 " Get Code Issues and syntax errors for CS files
