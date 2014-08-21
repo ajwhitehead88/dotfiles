@@ -6,7 +6,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'OrangeT/vim-csharp'
-Bundle 'Townk/vim-autoclose'
+Bundle 'Shougo/neocomplcache'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
@@ -24,7 +24,11 @@ Bundle 'surround.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/pyte'
+
 
 " VIMRC
 set nocompatible
@@ -102,19 +106,19 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set diffopt=vertical,filler
 
 " Completions
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType java set omnifunc=javacomplete#Complete
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType cs set omnifunc=OmniSharp#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 
 " bindings
-let mapleader = "`"
+let mapleader = " "
 
 " sudo save
 cmap w!! w !sudo tee % >/dev/null
@@ -221,6 +225,25 @@ let g:airline_right_sep=''
 let g:airline_powerline_fonts=0
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
+
+" neocompcache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
+
+if !exists('g:neocomplcache_omni_patterns') 
+    let g:neocomplcache_omni_patterns = {} 
+endif 
 
 " OMNISHARP
 " Get Code Issues and syntax errors for CS files
