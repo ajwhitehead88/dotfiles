@@ -1,37 +1,42 @@
-" VUNDLE
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-Bundle 'OrangeT/vim-csharp'
-Bundle 'Shougo/neocomplcache'
-Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'bling/vim-airline'
-Bundle 'bling/vim-bufferline'
-Bundle 'closetag.vim'
-Bundle 'ervandew/supertab'
-Bundle 'groenewege/vim-less'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'nathanaelkane/vim-indent-guides.git'
-Bundle 'nosami/Omnisharp'
-Bundle 'scrooloose/syntastic'
-Bundle 'skammer/vim-css-color.git'
-Bundle 'surround.vim'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/pyte'
-
-
 " VIMRC
 set nocompatible
+
+" VUNDLE
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'OrangeT/vim-csharp'
+Plugin 'Shougo/neocomplcache'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
+Plugin 'closetag.vim'
+Plugin 'elzr/vim-json'
+Plugin 'ervandew/supertab'
+Plugin 'groenewege/vim-less'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mhinz/vim-signify'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'nosami/Omnisharp'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic'
+Plugin 'skammer/vim-css-color'
+Plugin 'surround.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/pyte'
+
+call vundle#end()
 
 syntax on
 filetype plugin indent on
