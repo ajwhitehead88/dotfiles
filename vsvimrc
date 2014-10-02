@@ -1,0 +1,50 @@
+" VIMRC
+set nocompatible
+
+behave mswin
+syntax on
+filetype plugin indent on
+
+set cursorline
+set scrolloff=3         " Scroll when 3 lines from the edge
+set sidescroll=5        " Scroll 5 chars when moving off the right
+set sidescrolloff=5     " Scroll when 5 chars from the edge
+set wmh=0
+set previewheight=5
+set selection=inclusive
+set term=win32
+set encoding=utf-8
+set termencoding=utf-8
+set visualbell
+set history=500         " 100 lines of command line history
+
+set autoindent          " auto indents next new line
+set smartindent         " intelligent indenting -- DEPRECATED by cindent
+set expandtab           " insert spaces instead of tab chars
+set tabstop=4           " a n-space tab width
+set shiftwidth=4        " allows the use of < and > for VISUAL indenting
+set softtabstop=4       " counts n spaces when DELETE or BCKSPCE is used
+set shiftround
+
+set incsearch           " increment search
+set ignorecase          " case-insensitive search
+set smartcase           " upper-case sensitive search
+set hls
+
+set backspace=indent,eol,start
+
+" bindings
+let mapleader = " "
+
+" Unmap annoying keys
+nmap q: <Nop>
+nmap q/ <Nop>
+nmap q? <Nop>
+
+" Y like other capitals
+nnoremap Y y$
+
+nmap <Leader>bp :bprev<CR>
+nmap <Leader>bn :bnext<CR>
+
+set winaltkeys=yes
