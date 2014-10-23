@@ -23,7 +23,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'nosami/Omnisharp'
+"Plugin 'nosami/Omnisharp'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
@@ -121,7 +121,7 @@ autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+" autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 
 " bindings
 let mapleader = " "
@@ -250,25 +250,25 @@ if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {} 
 endif 
 
-" OMNISHARP
-" Get Code Issues and syntax errors for CS files
-let g:syntastic_cs_checkers = ['syntax', 'issues']
-autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+" " OMNISHARP
+" " Get Code Issues and syntax errors for CS files
+" let g:syntastic_cs_checkers = ['syntax', 'issues']
+" autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
-"show type information automatically when the cursor stops moving
-autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+" "show type information automatically when the cursor stops moving
+" autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
 
-" Contextual code actions (requires CtrlP)
-autocmd FileType cs nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
+" " Contextual code actions (requires CtrlP)
+" autocmd FileType cs nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
 
-" rename with dialog
-autocmd FileType cs nnoremap <leader>rr :OmniSharpRename<cr>
+" " rename with dialog
+" autocmd FileType cs nnoremap <leader>rr :OmniSharpRename<cr>
 
-" Synchronous build (blocks Vim)
-"autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
+" " Synchronous build (blocks Vim)
+" "autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
 
-" Builds can also run asynchronously with vim-dispatch installed
-autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuildAsync<cr>
+" " Builds can also run asynchronously with vim-dispatch installed
+" autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuildAsync<cr>
 
 " Windows only stuff
 if has("win32")
@@ -285,7 +285,7 @@ if has("win32")
 
 	" Session stuffs
 	"set sessionoptions-=resize,winpos
-	au GUIEnter * simalt ~x
+	" au GUIEnter * simalt ~x
 	"autocmd VIMEnter * :source $HOME/vimfiles/session.vim
 	"autocmd VIMLeave * :mksession! $HOME/vimfiles/session.vim
 
