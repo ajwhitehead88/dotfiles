@@ -8,6 +8,8 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+" Plugin 'vim-scripts/pyte'
+"Plugin 'nosami/Omnisharp'
 Plugin 'OrangeT/vim-csharp'
 Plugin 'Shougo/neocomplcache'
 Plugin 'altercation/vim-colors-solarized'
@@ -16,6 +18,7 @@ Plugin 'bling/vim-bufferline'
 Plugin 'closetag.vim'
 Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
+Plugin 'freeo/vim-kalisi'
 Plugin 'groenewege/vim-less'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jiangmiao/auto-pairs'
@@ -23,19 +26,18 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
 Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'nosami/Omnisharp'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'skammer/vim-css-color'
 Plugin 'surround.vim'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/pyte'
 
 call vundle#end()
 
@@ -297,4 +299,6 @@ endif
 
 set guifont=Envy\ Code\ R:h10
 
-colorscheme pyte
+colorscheme kalisi
+let g:airline_theme='kalisi'
+set background=light
