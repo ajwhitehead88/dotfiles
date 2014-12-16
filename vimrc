@@ -8,8 +8,6 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-" Plugin 'vim-scripts/pyte'
-"Plugin 'nosami/Omnisharp'
 Plugin 'OrangeT/vim-csharp'
 Plugin 'Shougo/neocomplcache'
 Plugin 'altercation/vim-colors-solarized'
@@ -26,6 +24,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'nosami/Omnisharp'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
@@ -60,6 +59,7 @@ set sidescrolloff=5     " Scroll when 5 chars from the edge
 set wmh=0
 set previewheight=5
 set selection=inclusive
+set updatetime=500
 
 if has("win32")
     set term=win32
@@ -87,9 +87,8 @@ set nowrap
 set lbr
 
 set wildmode=list:longest,full " Better completion
-set wildignore=*.svn,*.git,*\\tmp\\*,*.swp,*.zip,*.exe  " Ignore VCS files"
+set wildignore=*.svn,*.git,*\\tmp\\*,*.swp,*.zip,*.exe
 set completeopt=longest,menuone,preview
-set noshowmatch
 set pastetoggle=<F4>
 
 set autoindent          " auto indents next new line
@@ -123,7 +122,6 @@ autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 
 " bindings
 let mapleader = " "
@@ -186,11 +184,11 @@ autocmd FileType html let b:closetag_html_style=1
 "CtrlP
 nmap <Leader>p :CtrlPMRU<CR>
 nmap <Leader>n :CtrlPBuffer<CR>
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/]\.(git|svn)$',
+"   \ 'file': '\v\.(exe|so|dll)$',
+"   \ 'link': 'some_bad_symbolic_links'
+"   \ }
 
 " Tagbar
 nmap <Leader>tb :TagbarToggle<CR>
@@ -252,25 +250,48 @@ if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {} 
 endif 
 
-" " OMNISHARP
-" " Get Code Issues and syntax errors for CS files
-" let g:syntastic_cs_checkers = ['syntax', 'issues']
-" autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+" OMNISHARP
+" Get Code Issues and syntax errors for CS files
+let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 
-" "show type information automatically when the cursor stops moving
-" autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+" Show type information automatically when the cursor stops moving
+autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
 
-" " Contextual code actions (requires CtrlP)
-" autocmd FileType cs nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
+" Contextual code actions (requires CtrlP)
+autocmd FileType cs nnoremap <leader>oo<space> :OmniSharpGetCodeActions<cr>
 
-" " rename with dialog
-" autocmd FileType cs nnoremap <leader>rr :OmniSharpRename<cr>
+" Run code actions with text selected in visual mode to extract method
+autocmd FileType cs vnoremap <leader>oo<space> :call OmniSharp#GetCodeActions('visual')<cr>
 
-" " Synchronous build (blocks Vim)
-" "autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
+" Builds can also run asynchronously with vim-dispatch installed
+autocmd FileType cs nnoremap <leader>ob :wa!<cr>:OmniSharpBuildAsync<cr>
 
-" " Builds can also run asynchronously with vim-dispatch installed
-" autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuildAsync<cr>
+" rename with dialog
+autocmd FileType cs nnoremap <leader>or :OmniSharpRename<cr>
+
+" Automatically add new cs files to the nearest project on save
+autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+
+" Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+
+" The following commands are contextual, based on the current cursor position.
+autocmd FileType cs nnoremap <leader>ogd :OmniSharpGotoDefinition<cr>
+autocmd FileType cs nnoremap <leader>ofi :OmniSharpFindImplementations<cr>
+autocmd FileType cs nnoremap <leader>oft :OmniSharpFindType<cr>
+autocmd FileType cs nnoremap <leader>ofs :OmniSharpFindSymbol<cr>
+autocmd FileType cs nnoremap <leader>ofu :OmniSharpFindUsages<cr>
+autocmd FileType cs nnoremap <leader>ofm :OmniSharpFindMembers<cr>
+
+" Cursor can be anywhere on the line containing an issue 
+autocmd FileType cs nnoremap <leader>ox  :OmniSharpFixIssue<cr>  
+autocmd FileType cs nnoremap <leader>ofx :OmniSharpFixUsings<cr>
+autocmd FileType cs nnoremap <leader>ott :OmniSharpTypeLookup<cr>
+autocmd FileType cs nnoremap <leader>odc :OmniSharpDocumentation<cr>
+
+" Navigate methods and properties
+autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
+autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
 
 " Windows only stuff
 if has("win32")
