@@ -235,6 +235,9 @@ let g:airline#extensions#branch#enabled = 1
 " neocompcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
