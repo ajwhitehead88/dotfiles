@@ -15,7 +15,6 @@ Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
 Plugin 'closetag.vim'
 Plugin 'elzr/vim-json'
-Plugin 'ervandew/supertab'
 Plugin 'freeo/vim-kalisi'
 Plugin 'groenewege/vim-less'
 Plugin 'hail2u/vim-css3-syntax'
@@ -28,9 +27,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nosami/Omnisharp'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'skammer/vim-css-color'
-Plugin 'surround.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
@@ -115,8 +113,8 @@ set diffopt=vertical,filler
 
 " Completions
 autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
@@ -125,16 +123,10 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
 " bindings
-let mapleader = " "
+let mapleader=" "
 
 " sudo save
 cmap w!! w !sudo tee % >/dev/null
-
-" Navigate wrapped lines with j and k
-nmap j gj
-nmap k gk
-vmap j gj
-vmap k gk
 
 " Unmap annoying keys
 nmap q: <Nop>
@@ -177,6 +169,9 @@ imap <F2> <ESC>:bnext<CR>
 nmap <Leader>bp :bprev<CR>
 nmap <Leader>bn :bnext<CR>
 
+" vim-json
+let g:vim_json_syntax_conceal=0
+
 " closetag
 let g:closetag_html_style=1 
 autocmd FileType html let b:closetag_html_style=1
@@ -185,13 +180,15 @@ autocmd FileType html let b:closetag_html_style=1
 "CtrlP
 nmap <Leader>p :CtrlPMRU<CR>
 nmap <Leader>n :CtrlPBuffer<CR>
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|svn)$',
-"   \ 'file': '\v\.(exe|so|dll)$',
-"   \ 'link': 'some_bad_symbolic_links'
-"   \ }
+let g:ctrlp_custom_ignore={
+  \ 'dir':  '\v[\/]\.(git|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links'
+  \ }
 
 " Tagbar
+let g:tagbar_ctags_bin='~/.vim/ctags.exe'
+
 nmap <Leader>tb :TagbarToggle<CR>
 
 " sort lines
@@ -222,22 +219,22 @@ endfunction
 " indent guides
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent = 5
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_color_change_percent=5
 
 " airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " let g:airline_theme='solarized'
 let g:airline_powerline_fonts=0
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#bufferline#enabled=1
+let g:airline#extensions#branch#enabled=1
 
 " neocompcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_at_startup=1
+let g:neocomplete#enable_smart_case=1
+let g:neocomplcache_enable_camel_case_completion=1
+let g:neocomplcache_enable_underbar_completion=1
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -251,12 +248,12 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 if !exists('g:neocomplcache_omni_patterns') 
-    let g:neocomplcache_omni_patterns = {} 
+    let g:neocomplcache_omni_patterns={} 
 endif 
 
 " OMNISHARP
 " Get Code Issues and syntax errors for CS files
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+let g:syntastic_cs_checkers=['syntax', 'semantic', 'issues']
 
 " Show type information automatically when the cursor stops moving
 autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
@@ -303,12 +300,6 @@ if has("win32")
 	set columns=140
 	set lines=40
 	set winaltkeys=yes
-	set go-=T
-
-	nmap j j
-	nmap k k
-	vmap j j
-	vmap k k
 
 	" Session stuffs
 	"set sessionoptions-=resize,winpos
@@ -319,9 +310,9 @@ if has("win32")
 	set backupdir=$HOME\.vim\backup
 	set directory=$HOME\.vim\tmp
 	set shell=C:\Windows\system32\cmd.exe
-
 endif
 
+set guioptions=
 set guifont=Envy\ Code\ R:h10
 
 colorscheme kalisi
