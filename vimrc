@@ -8,11 +8,13 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+" Plugin 'scrooloose/syntastic'
 Plugin 'OrangeT/vim-csharp'
 Plugin 'Shougo/neocomplcache'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
+Plugin 'ciaranm/detectindent'
 Plugin 'closetag.vim'
 Plugin 'elzr/vim-json'
 Plugin 'freeo/vim-kalisi'
@@ -27,7 +29,6 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nosami/Omnisharp'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
-" Plugin 'scrooloose/syntastic'
 Plugin 'skammer/vim-css-color'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
@@ -293,6 +294,9 @@ autocmd FileType cs nnoremap <leader>odc :OmniSharpDocumentation<cr>
 " Navigate methods and properties
 autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
 autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
+
+" DetectIndent
+autocmd BufReadPost * :DetectIndent
 
 " Windows only stuff
 if has("win32")
