@@ -44,7 +44,7 @@ syntax on
 filetype plugin indent on
 
 set mouse=a
-set cmdheight=1         " command line height
+set cmdheight=2         " command line height
 set laststatus=2        " occasions to show status line, 2=always.
 set ruler               " ruler display in status line
 set showmode            " show mode at bottom of screen
@@ -105,7 +105,9 @@ set smartcase           " upper-case sensitive search
 set hls
 
 set backspace=indent,eol,start
-set showmatch           " show matching brackets (),{},[]
+set noshowmatch           " show matching brackets (),{},[]
+
+set splitbelow
 
 set nolist
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
@@ -113,6 +115,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set diffopt=vertical,filler
 
 " Completions
+set omnifunc=syntaxcomplete#Complete
 autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
@@ -233,26 +236,39 @@ let g:airline#extensions#branch#enabled=1
 
 " neocompcache
 let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_enable_auto_select=1
 let g:neocomplete#enable_smart_case=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
+let g:neocomplcache_min_syntax_length=0
+let g:neocomplcache_enable_auto_close_preview=0
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-" <C-h>: close popup and delete backword char.
+inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+inoremap <expr>.  neocomplcache#close_popup() . "."
+inoremap <expr>(  neocomplcache#close_popup() . "("
+inoremap <expr>)  neocomplcache#close_popup() . ")"
+inoremap <expr><space>  neocomplcache#close_popup() . " "
+inoremap <expr>;  neocomplcache#close_popup() . ";"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplcache#close_popup()
-inoremap <expr><C-e> neocomplcache#cancel_popup()
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><ESC> pumvisible() ? neocomplcache#cancel_popup() : "\<esc>"
 
-if !exists('g:neocomplcache_omni_patterns') 
-    let g:neocomplcache_omni_patterns={} 
-endif 
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
 
 " OMNISHARP
+let g:neocomplcache_omni_patterns.cs = '.*'
+
+let g:OmniSharp_timeout = 1
+
 " Get Code Issues and syntax errors for CS files
 let g:syntastic_cs_checkers=['syntax', 'semantic', 'issues']
 
