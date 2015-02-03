@@ -245,20 +245,14 @@ let g:neocomplcache_enable_auto_close_preview=0
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-inoremap <expr>.  neocomplcache#close_popup() . "."
-inoremap <expr>(  neocomplcache#close_popup() . "("
-inoremap <expr>)  neocomplcache#close_popup() . ")"
-inoremap <expr><space>  neocomplcache#close_popup() . " "
-inoremap <expr>;  neocomplcache#close_popup() . ";"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
+" <C-h>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-inoremap <expr><ESC> pumvisible() ? neocomplcache#cancel_popup() : "\<esc>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
