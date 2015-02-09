@@ -43,6 +43,8 @@ call vundle#end()
 syntax on
 filetype plugin indent on
 
+runtime macros/matchit.vim
+
 set mouse=a
 set cmdheight=2         " command line height
 set laststatus=2        " occasions to show status line, 2=always.
@@ -105,7 +107,7 @@ set smartcase           " upper-case sensitive search
 set hls
 
 set backspace=indent,eol,start
-set noshowmatch           " show matching brackets (),{},[]
+set showmatch           " show matching brackets (),{},[]
 
 set splitbelow
 
