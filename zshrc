@@ -69,22 +69,4 @@ bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
 
-
-local HOSTCOLOUR=
-if [[ $HOST == "masterflex" ]]; then
-    # MASTERFLEX
-    HOSTCOLOUR="$fg[yellow]"
-
-    export PATH=$PATH:/opt/android-sdk/platform-tools
-    alias xdo="DISPLAY=:0 xdotool"
-
-    compctl -g '~/roms/mame/links/*(:t:r)' sdlmame
-elif [[ $HOST == "MAN01-5DTTLX1" ]]; then
-	# WORKS CYGWIN
-    HOSTCOLOUR="$fg[magenta]"
-else
-	# UNKNOWN
-    HOSTCOLOUR="$fg[red]"
-fi
-
 PS1="%{$fg[white]%}%B%m%b %{$fg[white]%}%~ %{$fg[cyan]%}%B>%b %{$reset_color%}"
