@@ -66,7 +66,7 @@ set updatetime=500
 if has("win32")
     set term=win32
 else
-	set term=zsh
+	set term=screen-256color
 endif
 
 set encoding=utf-8
