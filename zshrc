@@ -1,4 +1,3 @@
-export HISTFILE=~/.histfile
 export HISTSIZE=10000
 export SAVEHIST=10000
 export EDITOR="vim"
@@ -15,8 +14,8 @@ unsetopt bgnice autoparamslash
 bindkey -v
 
 autoload -U colors && colors
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
+autoload -U promptinit && promptinit
 
 alias sudo="nocorrect sudo -E"
 alias ls="ls --color=auto -hF"
@@ -69,4 +68,6 @@ bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
 
-PS1="%{$fg[white]%}%B%m%b %{$fg[white]%}%~ %{$fg[cyan]%}%B>%b %{$reset_color%}"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+prompt walters
