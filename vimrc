@@ -14,7 +14,6 @@ Plugin 'Shougo/neocomplcache'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
-Plugin 'ciaranm/detectindent'
 Plugin 'closetag.vim'
 Plugin 'elzr/vim-json'
 Plugin 'freeo/vim-kalisi'
@@ -94,7 +93,7 @@ set completeopt=longest,menuone,preview
 set pastetoggle=<F4>
 
 set autoindent          " auto indents next new line
-set smartindent         " intelligent indenting -- DEPRECATED by cindent
+" set smartindent         " intelligent indenting -- DEPRECATED by cindent
 set expandtab           " insert spaces instead of tab chars
 set tabstop=4           " a n-space tab width
 set shiftwidth=4        " allows the use of < and > for VISUAL indenting
@@ -306,9 +305,6 @@ autocmd FileType cs nnoremap <leader>odc :OmniSharpDocumentation<cr>
 " Navigate methods and properties
 autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
 autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
-
-" DetectIndent
-autocmd BufReadPost * :DetectIndent
 
 " Windows only stuff
 if has("win32")
