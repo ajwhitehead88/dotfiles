@@ -81,8 +81,6 @@ set hidden
 set nobackup            " disable backup files (filename~)
 set autowrite
 set writebackup
-set backup
-set backupdir=$HOME/.vim/backup
 set directory=$HOME/.vim/tmp
 
 set nowrap
