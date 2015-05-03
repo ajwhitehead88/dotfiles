@@ -327,4 +327,4 @@ set guifont=Envy\ Code\ R:h10
 
 colorscheme kalisi
 let g:airline_theme='kalisi'
-set background=light
+set background=dark

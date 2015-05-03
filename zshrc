@@ -1,3 +1,3 @@
 # Source Prezto.
 source ~/.zpreztorc
-source ~/.zprezto/runcoms/zshrc
+source /usr/lib/prezto/init.zsh

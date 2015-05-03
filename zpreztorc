@@ -30,6 +30,7 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
+  'pacman' \
   'git' \
   'tmux' \
   'ssh' \
@@ -79,7 +80,7 @@ zstyle ':prezto:module:git:status:ignore' submodules 'all'
 #
 
 # Set the Pacman frontend.
-# zstyle ':prezto:module:pacman' frontend 'yaourt'
+zstyle ':prezto:module:pacman' frontend 'yaourt'
 
 #
 # Prompt
