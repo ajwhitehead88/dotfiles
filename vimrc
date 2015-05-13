@@ -1,46 +1,39 @@
 " VIMRC
 set nocompatible
 
-" VUNDLE
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+" vim-plug
+call plug#begin()
 
-Plugin 'gmarik/Vundle.vim'
+" Plug 'scrooloose/syntastic'
+Plug 'OrangeT/vim-csharp'
+Plug 'Shougo/neocomplcache'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'bling/vim-bufferline'
+Plug 'closetag.vim'
+Plug 'elzr/vim-json'
+Plug 'freeo/vim-kalisi'
+Plug 'groenewege/vim-less'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-signify'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nosami/Omnisharp', { 'for': 'cs' }
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'skammer/vim-css-color'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
 
-" Plugin 'scrooloose/syntastic'
-Plugin 'OrangeT/vim-csharp'
-Plugin 'Shougo/neocomplcache'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'bling/vim-bufferline'
-Plugin 'closetag.vim'
-Plugin 'elzr/vim-json'
-Plugin 'freeo/vim-kalisi'
-Plugin 'groenewege/vim-less'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'mhinz/vim-signify'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'nathanaelkane/vim-indent-guides'
-" Plugin 'nosami/Omnisharp'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'skammer/vim-css-color'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-surround'
-
-call vundle#end()
-
-syntax on
-filetype plugin indent on
+call plug#end()
 
 runtime macros/matchit.vim
 
@@ -64,8 +57,10 @@ set updatetime=500
 
 if has("win32")
     set term=win32
+    set directory=C:\WINDOWS\Temp
 else
 	set term=screen-256color
+    set directory=/tmp
 endif
 
 set encoding=utf-8
@@ -78,9 +73,7 @@ set history=500         " 100 lines of command line history
 set hidden
 
 set nobackup            " disable backup files (filename~)
-set autowrite
-set writebackup
-set directory=$HOME/.vim/tmp
+set nowritebackup
 
 set nowrap
 set lbr
