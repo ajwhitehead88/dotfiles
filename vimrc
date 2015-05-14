@@ -7,24 +7,23 @@ call plug#begin()
 " Plug 'scrooloose/syntastic'
 Plug 'OrangeT/vim-csharp'
 Plug 'Shougo/neocomplcache'
-Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
-Plug 'closetag.vim'
+Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl' ] }
 Plug 'elzr/vim-json'
 Plug 'freeo/vim-kalisi'
 Plug 'groenewege/vim-less'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nosami/Omnisharp', { 'for': 'cs' }
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'skammer/vim-css-color'
+Plug 'skammer/vim-coloresque'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -57,7 +56,7 @@ set updatetime=500
 
 if has("win32")
     set term=win32
-    set directory=C:\WINDOWS\Temp
+    set directory=~/vimfiles/tmp
 else
 	set term=screen-256color
     set directory=/tmp
@@ -171,7 +170,6 @@ let g:vim_json_syntax_conceal=0
 " closetag
 let g:closetag_html_style=1 
 autocmd FileType html let b:closetag_html_style=1
-:au Filetype html,xml,xsl source ~/.vim/bundle/closetag.vim/plugin/closetag.vim 
 
 "CtrlP
 nmap <Leader>p :CtrlPMRU<CR>
@@ -183,7 +181,7 @@ let g:ctrlp_custom_ignore={
   \ }
 
 " Tagbar
-let g:tagbar_ctags_bin='~/.vim/ctags.exe'
+" let g:tagbar_ctags_bin='~/.vim/ctags.exe'
 
 nmap <Leader>tb :TagbarToggle<CR>
 
