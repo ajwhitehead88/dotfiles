@@ -4,7 +4,8 @@ set nocompatible
 " vim-plug
 call plug#begin()
 
-" Plug 'scrooloose/syntastic'
+" Plug 'majutsushi/tagbar'
+" Plug 'mhinz/vim-signify'
 Plug 'OrangeT/vim-csharp'
 Plug 'Shougo/neocomplcache'
 Plug 'bling/vim-airline'
@@ -12,22 +13,22 @@ Plug 'bling/vim-bufferline'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl' ] }
 Plug 'elzr/vim-json'
 Plug 'freeo/vim-kalisi'
+Plug 'gorodinskiy/vim-coloresque'
 Plug 'groenewege/vim-less'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
-" Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-signify'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nosami/Omnisharp', { 'for': 'cs' }
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'skammer/vim-coloresque'
+" Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
@@ -161,8 +162,9 @@ nmap <F1> :bprev<CR>
 nmap <F2> :bnext<CR>
 imap <F1> <ESC>:bprev<CR>
 imap <F2> <ESC>:bnext<CR>
-nmap <Leader>bp :bprev<CR>
-nmap <Leader>bn :bnext<CR>
+for n in range(1, 9)
+    exe "nmap <Leader>".n." <ESC>:buffer ".n."<CR>"
+endfor
 
 " vim-json
 let g:vim_json_syntax_conceal=0
@@ -173,17 +175,15 @@ autocmd FileType html let b:closetag_html_style=1
 
 "CtrlP
 nmap <Leader>p :CtrlPMRU<CR>
-nmap <Leader>n :CtrlPBuffer<CR>
+nmap <Leader>. :CtrlP<CR>
+nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>t :CtrlPBufTag<CR>
 let g:ctrlp_custom_ignore={
   \ 'dir':  '\v[\/]\.(git|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links'
   \ }
 
-" Tagbar
-" let g:tagbar_ctags_bin='~/.vim/ctags.exe'
-
-nmap <Leader>tb :TagbarToggle<CR>
 
 " sort lines
 nmap <Leader>so :%!sort -u<CR>
@@ -200,8 +200,8 @@ nmap <Leader>hl :set nohls<CR>
 " toggle list chars
 nmap <Leader>li :set list!<CR>
 
-" convert to DOS
-nmap <Leader>td :e ++ff=dos<CR>
+" convert line endings
+nmap <Leader>le :%s/\r/\r/g<CR>
 
 " strip whitespace
 nmap <Leader>ss :call StripTrailingWhitespace()<CR>
@@ -295,6 +295,14 @@ autocmd FileType cs nnoremap <leader>odc :OmniSharpDocumentation<cr>
 autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
 autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
 
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jslint']
+
 " Windows only stuff
 if has("win32")
 	behave mswin
@@ -308,8 +316,6 @@ if has("win32")
 	"autocmd VIMEnter * :source $HOME/vimfiles/session.vim
 	"autocmd VIMLeave * :mksession! $HOME/vimfiles/session.vim
 
-	set backupdir=$HOME\.vim\backup
-	set directory=$HOME\.vim\tmp
 	set shell=C:\Windows\system32\cmd.exe
 endif
 
