@@ -6,8 +6,10 @@ call plug#begin()
 
 " Plug 'majutsushi/tagbar'
 " Plug 'mhinz/vim-signify'
+" Plug 'scrooloose/syntastic'
 Plug 'OrangeT/vim-csharp'
 Plug 'Shougo/neocomplcache'
+Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl' ] }
@@ -23,7 +25,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nosami/Omnisharp', { 'for': 'cs' }
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-" Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
