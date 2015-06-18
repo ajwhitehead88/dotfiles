@@ -33,6 +33,7 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
