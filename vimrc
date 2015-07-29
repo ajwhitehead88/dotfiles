@@ -104,7 +104,7 @@ set showmatch           " show matching brackets (),{},[]
 set splitbelow
 
 set nolist
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set listchars=tab:».,trail:·,extends:#,nbsp:·
 
 set diffopt=vertical,filler
 
