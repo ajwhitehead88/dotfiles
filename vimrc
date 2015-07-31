@@ -13,13 +13,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl' ] }
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
 Plug 'freeo/vim-kalisi'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'groenewege/vim-less'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nosami/Omnisharp', { 'for': 'cs' }
@@ -180,6 +180,7 @@ nmap <Leader>p :CtrlPMRU<CR>
 nmap <Leader>. :CtrlP<CR>
 nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>t :CtrlPBufTag<CR>
+
 let g:ctrlp_custom_ignore={
   \ 'dir':  '\v[\/]\.(git|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
