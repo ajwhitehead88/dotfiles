@@ -4,34 +4,32 @@ set nocompatible
 " vim-plug
 call plug#begin()
 
+" Plug 'Shougo/neocomplcache'
 " Plug 'majutsushi/tagbar'
-" Plug 'mhinz/vim-signify'
+" Plug 'nosami/Omnisharp', { 'for': 'cs' }
 " Plug 'scrooloose/syntastic'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-speeddating'
 Plug 'OrangeT/vim-csharp'
-Plug 'Shougo/neocomplcache'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
 Plug 'freeo/vim-kalisi'
 Plug 'gorodinskiy/vim-coloresque'
-Plug 'groenewege/vim-less'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'nosami/Omnisharp', { 'for': 'cs' }
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 
