@@ -87,7 +87,7 @@ set pastetoggle=<F4>
 
 set autoindent          " auto indents next new line
 " set smartindent         " intelligent indenting -- DEPRECATED by cindent
-set expandtab           " insert spaces instead of tab chars
+set noexpandtab           " insert spaces instead of tab chars
 set tabstop=4           " a n-space tab width
 set shiftwidth=4        " allows the use of < and > for VISUAL indenting
 set softtabstop=4       " counts n spaces when DELETE or BCKSPCE is used
