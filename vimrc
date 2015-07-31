@@ -16,7 +16,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl' ] }
+Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
 Plug 'freeo/vim-kalisi'
@@ -101,8 +101,8 @@ set showmatch           " show matching brackets (),{},[]
 
 set splitbelow
 
-set nolist
-set listchars=tab:».,trail:·,extends:#,nbsp:·
+set list
+set listchars=tab:»\ ,trail:·
 
 set diffopt=vertical,filler
 
@@ -185,7 +185,6 @@ let g:ctrlp_custom_ignore={
   \ 'link': 'some_bad_symbolic_links'
   \ }
 
-
 " sort lines
 nmap <Leader>so :%!sort -u<CR>
 
@@ -211,12 +210,6 @@ function! StripTrailingWhitespace()
     %s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
 endfunction
 
-" indent guides
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_color_change_percent=5
-
 " airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -224,85 +217,6 @@ let g:airline_right_sep=''
 let g:airline_powerline_fonts=0
 let g:airline#extensions#bufferline#enabled=1
 let g:airline#extensions#branch#enabled=1
-
-" neocompcache
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_auto_select=1
-let g:neocomplete#enable_smart_case=1
-let g:neocomplcache_enable_camel_case_completion=1
-let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_min_syntax_length=0
-let g:neocomplcache_enable_auto_close_preview=0
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-" <C-h>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplcache#close_popup()
-inoremap <expr><C-e> neocomplcache#cancel_popup()
-
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-
-" OMNISHARP
-let g:neocomplcache_omni_patterns.cs = '.*'
-
-let g:OmniSharp_timeout = 1
-
-" Get Code Issues and syntax errors for CS files
-let g:syntastic_cs_checkers=['syntax', 'semantic', 'issues']
-
-" Show type information automatically when the cursor stops moving
-autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-
-" Contextual code actions (requires CtrlP)
-autocmd FileType cs nnoremap <leader>oo<space> :OmniSharpGetCodeActions<cr>
-
-" Run code actions with text selected in visual mode to extract method
-autocmd FileType cs vnoremap <leader>oo<space> :call OmniSharp#GetCodeActions('visual')<cr>
-
-" Builds can also run asynchronously with vim-dispatch installed
-autocmd FileType cs nnoremap <leader>ob :wa!<cr>:OmniSharpBuildAsync<cr>
-
-" rename with dialog
-autocmd FileType cs nnoremap <leader>or :OmniSharpRename<cr>
-
-" Automatically add new cs files to the nearest project on save
-autocmd BufWritePost *.cs call OmniSharp#AddToProject()
-
-" Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-
-" The following commands are contextual, based on the current cursor position.
-autocmd FileType cs nnoremap <leader>ogd :OmniSharpGotoDefinition<cr>
-autocmd FileType cs nnoremap <leader>ofi :OmniSharpFindImplementations<cr>
-autocmd FileType cs nnoremap <leader>oft :OmniSharpFindType<cr>
-autocmd FileType cs nnoremap <leader>ofs :OmniSharpFindSymbol<cr>
-autocmd FileType cs nnoremap <leader>ofu :OmniSharpFindUsages<cr>
-autocmd FileType cs nnoremap <leader>ofm :OmniSharpFindMembers<cr>
-
-" Cursor can be anywhere on the line containing an issue 
-autocmd FileType cs nnoremap <leader>ox  :OmniSharpFixIssue<cr>  
-autocmd FileType cs nnoremap <leader>ofx :OmniSharpFixUsings<cr>
-autocmd FileType cs nnoremap <leader>ott :OmniSharpTypeLookup<cr>
-autocmd FileType cs nnoremap <leader>odc :OmniSharpDocumentation<cr>
-
-" Navigate methods and properties
-autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
-autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
-
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jslint']
 
 " Windows only stuff
 if has("win32")
