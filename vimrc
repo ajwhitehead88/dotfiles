@@ -5,6 +5,7 @@ set nocompatible
 call plug#begin()
 
 " Plug 'Shougo/neocomplcache'
+" Plug 'airblade/vim-gitgutter'
 " Plug 'majutsushi/tagbar'
 " Plug 'nosami/Omnisharp', { 'for': 'cs' }
 " Plug 'scrooloose/syntastic'
@@ -12,7 +13,7 @@ call plug#begin()
 " Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-speeddating'
 Plug 'OrangeT/vim-csharp'
-Plug 'airblade/vim-gitgutter'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'cakebaker/scss-syntax.vim'
@@ -174,6 +175,11 @@ let g:closetag_html_style=1
 autocmd FileType html let b:closetag_html_style=1
 
 "CtrlP
+
+if has('python')
+	let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+endif
+
 nmap <Leader>p :CtrlPMRU<CR>
 nmap <Leader>. :CtrlP<CR>
 nmap <Leader>b :CtrlPBuffer<CR>
