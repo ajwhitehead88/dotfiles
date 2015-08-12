@@ -231,6 +231,13 @@ if has("win32")
 	set lines=40
 	set winaltkeys=yes
 
+	if !has("gui_running")
+		set term=xterm
+		set t_Co=256
+		let &t_AB="\e[48;5;%dm"
+		let &t_AF="\e[38;5;%dm"
+	endif
+
 	" Session stuffs
 	"set sessionoptions-=resize,winpos
 	" au GUIEnter * simalt ~x
