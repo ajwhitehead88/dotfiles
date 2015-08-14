@@ -244,7 +244,8 @@ if has("win32")
 	"autocmd VIMEnter * :source $HOME/vimfiles/session.vim
 	"autocmd VIMLeave * :mksession! $HOME/vimfiles/session.vim
 
-	set shell=C:\Windows\system32\cmd.exe
+	set shell=powershell
+	set shellcmdflag=-command
 endif
 
 set guioptions=
