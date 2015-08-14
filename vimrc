@@ -171,7 +171,7 @@ endfor
 let g:vim_json_syntax_conceal=0
 
 " closetag
-let g:closetag_html_style=1 
+let g:closetag_html_style=1
 autocmd FileType html let b:closetag_html_style=1
 
 "CtrlP
@@ -185,8 +185,8 @@ nmap <Leader>. :CtrlP<CR>
 nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>t :CtrlPBufTag<CR>
 
-let g:ctrlp_custom_ignore={
-  \ 'dir':  '\v[\/]\.(git|svn)$',
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.svn|node_modules)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links'
   \ }
