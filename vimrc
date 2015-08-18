@@ -39,29 +39,29 @@ call plug#end()
 runtime macros/matchit.vim
 
 set mouse=a
-set cmdheight=2         " command line height
-set laststatus=2        " occasions to show status line, 2=always.
-set ruler               " ruler display in status line
-set showmode            " show mode at bottom of screen
+set cmdheight=2		 " command line height
+set laststatus=2		" occasions to show status line, 2=always.
+set ruler			   " ruler display in status line
+set showmode			" show mode at bottom of screen
 set modeline
 set showcmd
-set relativenumber      " show line numbers
-set number              " show line numbers
+set relativenumber	  " show line numbers
+set number			  " show line numbers
 set cursorline
-set scrolloff=3         " Scroll when 3 lines from the edge
-set sidescroll=5        " Scroll 5 chars when moving off the right
-set sidescrolloff=5     " Scroll when 5 chars from the edge
+set scrolloff=3		 " Scroll when 3 lines from the edge
+set sidescroll=5		" Scroll 5 chars when moving off the right
+set sidescrolloff=5	 " Scroll when 5 chars from the edge
 set wmh=0
 set previewheight=5
 set selection=inclusive
 set updatetime=500
 
 if has("win32")
-    set term=win32
-    set directory=~/vimfiles/tmp
+	set term=win32
+	set directory=~/vimfiles/tmp
 else
 	set term=screen-256color
-    set directory=/tmp
+	set directory=/tmp
 endif
 
 set encoding=utf-8
@@ -70,10 +70,10 @@ set shell=/bin/zsh
 set vb
 set t_vb=
 set t_Co=256
-set history=500         " 100 lines of command line history
+set history=500		 " 100 lines of command line history
 set hidden
 
-set nobackup            " disable backup files (filename~)
+set nobackup			" disable backup files (filename~)
 set nowritebackup
 
 set nowrap
@@ -84,21 +84,21 @@ set wildignore=*.svn,*.git,*\\tmp\\*,*.swp,*.zip,*.exe
 set completeopt=longest,menuone,preview
 set pastetoggle=<F4>
 
-set autoindent          " auto indents next new line
-" set smartindent         " intelligent indenting -- DEPRECATED by cindent
-set noexpandtab           " insert spaces instead of tab chars
-set tabstop=4           " a n-space tab width
-set shiftwidth=4        " allows the use of < and > for VISUAL indenting
-set softtabstop=4       " counts n spaces when DELETE or BCKSPCE is used
+set autoindent		  " auto indents next new line
+" set smartindent		 " intelligent indenting -- DEPRECATED by cindent
+set noexpandtab		   " insert spaces instead of tab chars
+set tabstop=4		   " a n-space tab width
+set shiftwidth=4		" allows the use of < and > for VISUAL indenting
+set softtabstop=4	   " counts n spaces when DELETE or BCKSPCE is used
 set shiftround
 
-set incsearch           " increment search
-set ignorecase          " case-insensitive search
-set smartcase           " upper-case sensitive search
+set incsearch		   " increment search
+set ignorecase		  " case-insensitive search
+set smartcase		   " upper-case sensitive search
 set hls
 
 set backspace=indent,eol,start
-set showmatch           " show matching brackets (),{},[]
+set showmatch		   " show matching brackets (),{},[]
 
 set splitbelow
 
@@ -164,7 +164,7 @@ nmap <F2> :bnext<CR>
 imap <F1> <ESC>:bprev<CR>
 imap <F2> <ESC>:bnext<CR>
 for n in range(1, 9)
-    exe "nmap <Leader>".n." <ESC>:buffer ".n."<CR>"
+	exe "nmap <Leader>".n." <ESC>:buffer ".n."<CR>"
 endfor
 
 " vim-json
@@ -212,8 +212,8 @@ nmap <Leader>le :%s/\r/\r/g<CR>
 " strip whitespace
 nmap <Leader>ss :call StripTrailingWhitespace()<CR>
 function! StripTrailingWhitespace()
-    %s/[ \t]\+$//ge
-    %s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
+	%s/[ \t]\+$//ge
+	%s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
 endfunction
 
 " airline
@@ -244,8 +244,7 @@ if has("win32")
 	"autocmd VIMEnter * :source $HOME/vimfiles/session.vim
 	"autocmd VIMLeave * :mksession! $HOME/vimfiles/session.vim
 
-	set shell=powershell
-	set shellcmdflag=-command
+	set shell=C:\Windows\system32\cmd.exe
 endif
 
 set guioptions=
