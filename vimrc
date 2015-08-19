@@ -10,17 +10,15 @@ call plug#begin()
 " Plug 'nosami/Omnisharp', { 'for': 'cs' }
 " Plug 'scrooloose/syntastic'
 " Plug 'terryma/vim-multiple-cursors'
-" Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-speeddating'
 Plug 'OrangeT/vim-csharp'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'bling/vim-airline'
-Plug 'bling/vim-bufferline'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
-Plug 'freeo/vim-kalisi'
+Plug 'w0ng/vim-hybrid'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
@@ -29,6 +27,7 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -108,6 +107,14 @@ set listchars=tab:»\ ,trail:·
 set diffopt=vertical,filler
 
 " Completions
+
+inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
 set omnifunc=syntaxcomplete#Complete
 autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
@@ -163,9 +170,6 @@ nmap <F1> :bprev<CR>
 nmap <F2> :bnext<CR>
 imap <F1> <ESC>:bprev<CR>
 imap <F2> <ESC>:bnext<CR>
-for n in range(1, 9)
-	exe "nmap <Leader>".n." <ESC>:buffer ".n."<CR>"
-endfor
 
 " vim-json
 let g:vim_json_syntax_conceal=0
@@ -219,10 +223,32 @@ endfunction
 " airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-" let g:airline_theme='solarized'
 let g:airline_powerline_fonts=0
-let g:airline#extensions#bufferline#enabled=1
+
+let g:airline_extensions = ['branch', 'tabline']
+
 let g:airline#extensions#branch#enabled=1
+
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#buffer_idx_mode=1
+let g:airline#extensions#tabline#buffer_nr_show=0
+let g:airline#extensions#tabline#show_buffers=1
+let g:airline#extensions#tabline#show_tabs=1
+let g:airline#extensions#tabline#buffer_min_count=0
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 " Windows only stuff
 if has("win32")
@@ -250,6 +276,6 @@ endif
 set guioptions=
 set guifont=Envy\ Code\ R:h10
 
-colorscheme kalisi
-let g:airline_theme='kalisi'
+colorscheme hybrid
+let g:airline_theme='hybrid'
 set background=dark
