@@ -38,18 +38,18 @@ call plug#end()
 runtime macros/matchit.vim
 
 set mouse=a
-set cmdheight=2		 " command line height
-set laststatus=2		" occasions to show status line, 2=always.
-set ruler			   " ruler display in status line
-set showmode			" show mode at bottom of screen
+set cmdheight=2
+set laststatus=2
+set ruler
+set showmode
 set modeline
 set showcmd
-set relativenumber	  " show line numbers
-set number			  " show line numbers
+set relativenumber
+set number
 set cursorline
-set scrolloff=3		 " Scroll when 3 lines from the edge
-set sidescroll=5		" Scroll 5 chars when moving off the right
-set sidescrolloff=5	 " Scroll when 5 chars from the edge
+set scrolloff=3
+set sidescroll=5
+set sidescrolloff=5
 set wmh=0
 set previewheight=5
 set selection=inclusive
@@ -69,10 +69,10 @@ set shell=/bin/zsh
 set vb
 set t_vb=
 set t_Co=256
-set history=500		 " 100 lines of command line history
+set history=500
 set hidden
 
-set nobackup			" disable backup files (filename~)
+set nobackup
 set nowritebackup
 
 set nowrap
@@ -83,21 +83,21 @@ set wildignore=*.svn,*.git,*\\tmp\\*,*.swp,*.zip,*.exe
 set completeopt=longest,menuone,preview
 set pastetoggle=<F4>
 
-set autoindent		  " auto indents next new line
-" set smartindent		 " intelligent indenting -- DEPRECATED by cindent
-set noexpandtab		   " insert spaces instead of tab chars
-set tabstop=4		   " a n-space tab width
-set shiftwidth=4		" allows the use of < and > for VISUAL indenting
-set softtabstop=4	   " counts n spaces when DELETE or BCKSPCE is used
+set autoindent
+" set smartindent
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set shiftround
 
-set incsearch		   " increment search
-set ignorecase		  " case-insensitive search
-set smartcase		   " upper-case sensitive search
+set incsearch
+set ignorecase
+set smartcase
 set hls
 
 set backspace=indent,eol,start
-set showmatch		   " show matching brackets (),{},[]
+set showmatch
 
 set splitbelow
 
