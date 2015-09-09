@@ -8,23 +8,22 @@ call plug#begin()
 " Plug 'airblade/vim-gitgutter'
 " Plug 'majutsushi/tagbar'
 " Plug 'nosami/Omnisharp', { 'for': 'cs' }
-" Plug 'scrooloose/syntastic'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'tpope/vim-speeddating'
-Plug 'OrangeT/vim-csharp'
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'OrangeT/vim-csharp'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
-Plug 'w0ng/vim-hybrid'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -32,6 +31,7 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
+Plug 'w0ng/vim-hybrid'
 
 call plug#end()
 
@@ -220,12 +220,24 @@ function! StripTrailingWhitespace()
 	%s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
 endfunction
 
+" syntastic
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_javascript_checkers=['eslint', 'jshint']
+let g:syntastic_sass_checkers=['scss_lint']
+let g:syntastic_scss_checkers=['scss_lint']
+let g:syntastic_css_checkers=['csslint']
+let g:syntastic_sass_scss_lint_args='-x Indentation'
+let g:syntastic_scss_scss_lint_args='-x Indentation'
+
 " airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_powerline_fonts=0
 
-let g:airline_extensions = ['branch', 'tabline']
+let g:airline_extensions = ['branch', 'tabline', 'syntastic']
 
 let g:airline#extensions#branch#enabled=1
 
