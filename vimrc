@@ -4,7 +4,9 @@ set nocompatible
 " vim-plug
 call plug#begin()
 
-" Plug 'Shougo/neocomplcache'
+if has('lua')
+	Plug 'Shougo/neocomplete'
+endif
 " Plug 'airblade/vim-gitgutter'
 " Plug 'majutsushi/tagbar'
 " Plug 'nosami/Omnisharp', { 'for': 'cs' }
@@ -170,6 +172,11 @@ nmap <F1> :bprev<CR>
 nmap <F2> :bnext<CR>
 imap <F1> <ESC>:bprev<CR>
 imap <F2> <ESC>:bnext<CR>
+
+" neocomplete
+if has('lua')
+	let g:neocomplete#enable_at_startup=1
+endif
 
 " vim-json
 let g:vim_json_syntax_conceal=0
