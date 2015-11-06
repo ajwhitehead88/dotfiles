@@ -11,20 +11,22 @@ endif
 " Plug 'majutsushi/tagbar'
 " Plug 'nosami/Omnisharp', { 'for': 'cs' }
 " Plug 'terryma/vim-multiple-cursors'
-" Plug 'tpope/vim-speeddating'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'OrangeT/vim-csharp'
+Plug 'Smart-Tabs'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
+Plug 'gavocanov/vim-js-indent'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
-Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -34,6 +36,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0ng/vim-hybrid'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-shell'
 
 call plug#end()
 
@@ -88,9 +92,12 @@ set pastetoggle=<F4>
 set autoindent
 " set smartindent
 set noexpandtab
-set tabstop=4
+set copyindent
+set preserveindent
+set linebreak
+set softtabstop=0
 set shiftwidth=4
-set softtabstop=4
+set tabstop=4
 set shiftround
 
 set incsearch
@@ -230,14 +237,17 @@ endfunction
 " syntastic
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open=0
 let g:syntastic_check_on_wq=0
-let g:syntastic_javascript_checkers=['eslint', 'jshint']
+let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_sass_checkers=['scss_lint']
 let g:syntastic_scss_checkers=['scss_lint']
 let g:syntastic_css_checkers=['csslint']
 let g:syntastic_sass_scss_lint_args='-x Indentation'
 let g:syntastic_scss_scss_lint_args='-x Indentation'
+
+" jsx
+let g:jsx_ext_required = 0
 
 " airline
 let g:airline_left_sep=''
