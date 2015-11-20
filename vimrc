@@ -315,6 +315,6 @@ endif
 set guioptions=
 set guifont=Envy\ Code\ R:h10
 
-colorscheme molokai
-let g:airline_theme='molokai'
+colorscheme hybrid
+let g:airline_theme='hybrid'
 set background=dark
