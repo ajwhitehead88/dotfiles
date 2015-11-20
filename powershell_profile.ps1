@@ -1,6 +1,9 @@
 # Load posh-git example profile
 . '~\Documents\WindowsPowerShell\Modules\posh-git\profile.example.ps1'
 
+# Colours
+Import-Module PSColor
+
 # ReadLine
 Import-Module PSReadline
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
