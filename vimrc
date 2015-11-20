@@ -16,7 +16,7 @@ Plug 'OrangeT/vim-csharp'
 Plug 'Smart-Tabs'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' ] }
+Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' , 'jsx' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
 Plug 'gavocanov/vim-js-indent'
@@ -25,6 +25,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
 Plug 'scrooloose/syntastic'
@@ -91,7 +92,7 @@ set pastetoggle=<F4>
 
 set autoindent
 " set smartindent
-set noexpandtab
+set expandtab
 set copyindent
 set preserveindent
 set linebreak
@@ -115,24 +116,27 @@ set listchars=tab:»\ ,trail:·
 
 set diffopt=vertical,filler
 
+" Change directory on BufEnter
+autocmd BufEnter * silent! lcd %:p:h
+
 " Completions
 
-inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
-inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+" inoremap <expr> <CR>  pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 set omnifunc=syntaxcomplete#Complete
-autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript,jsx setlocal ts=2 sts=2 sw=2
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
 " bindings
@@ -204,7 +208,7 @@ nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>t :CtrlPBufTag<CR>
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.svn|node_modules)$',
+  \ 'dir':  '\v[\/](\.git|\.svn|node_modules|dist)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links'
   \ }
@@ -228,11 +232,16 @@ nmap <Leader>li :set list!<CR>
 nmap <Leader>le :%s/\r/\r/g<CR>
 
 " strip whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 nmap <Leader>ss :call StripTrailingWhitespace()<CR>
 function! StripTrailingWhitespace()
 	%s/[ \t]\+$//ge
 	%s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
 endfunction
+
+" indent guides
+let g:indent_guides_enable_on_vim_startup=1
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
@@ -268,6 +277,7 @@ let g:airline#extensions#tabline#buffer_nr_show=0
 let g:airline#extensions#tabline#show_buffers=1
 let g:airline#extensions#tabline#show_tabs=1
 let g:airline#extensions#tabline#buffer_min_count=0
+let g:airline#extensions#tabline#fnamemod=':t'
 
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -305,6 +315,6 @@ endif
 set guioptions=
 set guifont=Envy\ Code\ R:h10
 
-colorscheme hybrid
-let g:airline_theme='hybrid'
+colorscheme molokai
+let g:airline_theme='molokai'
 set background=dark
