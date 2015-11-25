@@ -10,7 +10,6 @@ endif
 " Plug 'airblade/vim-gitgutter'
 " Plug 'majutsushi/tagbar'
 " Plug 'nosami/Omnisharp', { 'for': 'cs' }
-" Plug 'terryma/vim-multiple-cursors'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'OrangeT/vim-csharp'
 Plug 'Smart-Tabs'
@@ -23,12 +22,15 @@ Plug 'gavocanov/vim-js-indent'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
+Plug 'joshdick/airline-onedark.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
 Plug 'scrooloose/syntastic'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -36,7 +38,6 @@ Plug 'tpope/vim-markdown', { 'for': [ 'markdown' ] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
-Plug 'w0ng/vim-hybrid'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-shell'
 
@@ -315,6 +316,6 @@ endif
 set guioptions=
 set guifont=Envy\ Code\ R:h10
 
-colorscheme hybrid
-let g:airline_theme='hybrid'
+colorscheme onedark
+let g:airline_theme='onedark'
 set background=dark
