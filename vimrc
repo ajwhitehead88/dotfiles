@@ -5,14 +5,15 @@ set nocompatible
 call plug#begin()
 
 if has('lua')
-	Plug 'Shougo/neocomplete'
+    Plug 'Shougo/neocomplete'
 endif
-" Plug 'airblade/vim-gitgutter'
 " Plug 'majutsushi/tagbar'
 " Plug 'nosami/Omnisharp', { 'for': 'cs' }
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'OrangeT/vim-csharp'
+Plug 'PProvost/vim-ps1'
 Plug 'Smart-Tabs'
+Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' , 'jsx' ] }
@@ -64,11 +65,11 @@ set selection=inclusive
 set updatetime=500
 
 if has("win32")
-	set term=win32
-	set directory=~/vimfiles/tmp
+    set term=win32
+    set directory=~/vimfiles/tmp
 else
-	set term=screen-256color
-	set directory=/tmp
+    set term=screen-256color
+    set directory=/tmp
 endif
 
 set encoding=utf-8
@@ -136,7 +137,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript,jsx setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript,jsx setlocal ts=2 sts=2 sw=2
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
@@ -187,7 +188,22 @@ imap <F2> <ESC>:bnext<CR>
 
 " neocomplete
 if has('lua')
-	let g:neocomplete#enable_at_startup=1
+    let g:acp_enableAtStartup=0
+    let g:neocomplete#enable_at_startup=1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#sources#syntax#min_keyword_length = 2
+    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+    " Define keyword.
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+    " Enable heavy omni completion.
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+    endif
 endif
 
 " vim-json
@@ -197,10 +213,12 @@ let g:vim_json_syntax_conceal=0
 let g:closetag_html_style=1
 autocmd FileType html let b:closetag_html_style=1
 
-"CtrlP
+" netrw
+nmap <Leader>f :Ex<CR>
 
+"CtrlP
 if has('python')
-	let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 endif
 
 nmap <Leader>p :CtrlPMRU<CR>
@@ -237,8 +255,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 nmap <Leader>ss :call StripTrailingWhitespace()<CR>
 function! StripTrailingWhitespace()
-	%s/[ \t]\+$//ge
-	%s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
+    %s/[ \t]\+$//ge
+    %s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
 endfunction
 
 " indent guides
@@ -292,23 +310,23 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 
 " Windows only stuff
 if has("win32")
-	behave mswin
-	set columns=140
-	set lines=40
-	set winaltkeys=yes
+    behave mswin
+    set columns=140
+    set lines=40
+    set winaltkeys=yes
 
-	if !has("gui_running")
-		set term=xterm
-		set t_Co=256
-		let &t_AB="\e[48;5;%dm"
-		let &t_AF="\e[38;5;%dm"
-	endif
+    if !has("gui_running")
+        set term=xterm
+        set t_Co=256
+        let &t_AB="\e[48;5;%dm"
+        let &t_AF="\e[38;5;%dm"
+    endif
 
-	" Session stuffs
-	"set sessionoptions-=resize,winpos
-	" au GUIEnter * simalt ~x
-	"autocmd VIMEnter * :source $HOME/vimfiles/session.vim
-	"autocmd VIMLeave * :mksession! $HOME/vimfiles/session.vim
+    " Session stuffs
+    "set sessionoptions-=resize,winpos
+    " au GUIEnter * simalt ~x
+    "autocmd VIMEnter * :source $HOME/vimfiles/session.vim
+    "autocmd VIMLeave * :mksession! $HOME/vimfiles/session.vim
 
 	set shell=C:\Windows\system32\cmd.exe
 endif
