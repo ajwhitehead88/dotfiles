@@ -2,7 +2,7 @@
 . '~\Documents\WindowsPowerShell\Modules\posh-git\profile.example.ps1'
 
 # Colours
-Import-Module PSColor
+Import-Module PSColors
 
 # ReadLine
 Import-Module PSReadline
