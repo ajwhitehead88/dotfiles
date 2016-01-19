@@ -44,8 +44,6 @@ URxvt*loginShell:               true
 URxvt*secondaryScroll:          true
 URxvt*visualBell:               true
 URxvt*urgentOnBell:             true
-URxvt*keysym.Home:              \033[1~
-URxvt*keysym.End:               \033[4~
 
 ! rofi
 rofi.lines:                     5

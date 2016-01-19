@@ -38,7 +38,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': [ 'markdown' ] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-shell'
 
@@ -129,11 +128,6 @@ inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
 
 set omnifunc=syntaxcomplete#Complete
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-autocmd FileType ruby let g:rubycomplete_classes_in_global=1
-autocmd FileType ruby setlocal ts=2 sts=2 sw=2
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
