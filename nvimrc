@@ -4,10 +4,9 @@ set nocompatible
 " vim-plug
 call plug#begin()
 
-if has('lua')
-    Plug 'Shougo/neocomplete'
-endif
-Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
+Plug 'Shougo/deoplete.nvim'
+" Plug 'majutsushi/tagbar'
+Plug 'nosami/Omnisharp', { 'for': 'cs', 'do': './omnisharp-roslyn/build.sh' }
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'OrangeT/vim-csharp'
 Plug 'PProvost/vim-ps1'
@@ -32,13 +31,10 @@ Plug 'othree/yajs.vim'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': [ 'markdown' ] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-shell'
 
 call plug#end()
 
@@ -61,21 +57,12 @@ set wmh=0
 set previewheight=5
 set selection=inclusive
 set updatetime=500
-
-if has("win32")
-    set term=win32
-    set directory=~/vimfiles/tmp
-else
-    set term=screen-256color
-    set directory=/tmp
-endif
+set directory=/tmp
 
 set encoding=utf-8
 set termencoding=utf-8
 set shell=/bin/zsh
 set vb
-set t_vb=
-set t_Co=256
 set history=500
 set hidden
 
@@ -179,27 +166,6 @@ nmap <F2> :bnext<CR>
 imap <F1> <ESC>:bprev<CR>
 imap <F2> <ESC>:bnext<CR>
 
-" neocomplete
-if has('lua')
-    let g:acp_enableAtStartup=0
-    let g:neocomplete#enable_at_startup=1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 2
-    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-    " Define keyword.
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-    " Enable heavy omni completion.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
-endif
-
 " vim-json
 let g:vim_json_syntax_conceal=0
 
@@ -209,6 +175,11 @@ autocmd FileType html let b:closetag_html_style=1
 
 " netrw
 nmap <Leader>f :Ex<CR>
+
+" deoplete
+let g:deoplete#enable_at_startup=1
+let g:deoplete#ignore_case=1
+let g:deoplete#enable_smart_case=1
 
 "CtrlP
 if has('python')
@@ -267,9 +238,6 @@ let g:syntastic_scss_checkers=['scss_lint']
 let g:syntastic_css_checkers=['csslint']
 let g:syntastic_sass_scss_lint_args='-x Indentation'
 let g:syntastic_scss_scss_lint_args='-x Indentation'
-let g:syntastic_cs_checkers = ['code_checker']
-
-autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 
 " jsx
 let g:jsx_ext_required = 0
@@ -304,98 +272,6 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-
-"OmniSharp
-let g:OmniSharp_selector_ui = 'ctrlp'"
-let g:OmniSharp_server_type = 'roslyn'
-
-augroup omnisharp_commands
-    autocmd!
-
-    "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-
-    " Builds can also run asynchronously with vim-dispatch installed
-    autocmd FileType cs nnoremap <leader>ob :wa!<cr>:OmniSharpBuildAsync<cr>
-
-    " Automatically add new cs files to the nearest project on save
-    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
-
-    "show type information automatically when the cursor stops moving
-    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-
-    "The following commands are contextual, based on the current cursor position.
-    autocmd FileType cs nnoremap <leader>ogd :OmniSharpGotoDefinition<cr>
-    autocmd FileType cs nnoremap <leader>ofi :OmniSharpFindImplementations<cr>
-    autocmd FileType cs nnoremap <leader>oft :OmniSharpFindType<cr>
-    autocmd FileType cs nnoremap <leader>ofs :OmniSharpFindSymbol<cr>
-    autocmd FileType cs nnoremap <leader>ofu :OmniSharpFindUsages<cr>
-
-    "finds members in the current buffer
-    autocmd FileType cs nnoremap <leader>ofm :OmniSharpFindMembers<cr>
-
-    " cursor can be anywhere on the line containing an issue
-    autocmd FileType cs nnoremap <leader>ox  :OmniSharpFixIssue<cr>
-    autocmd FileType cs nnoremap <leader>ofx :OmniSharpFixUsings<cr>
-    autocmd FileType cs nnoremap <leader>ott :OmniSharpTypeLookup<cr>
-    autocmd FileType cs nnoremap <leader>odc :OmniSharpDocumentation<cr>
-
-    "navigate up by method/property/field
-    autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr>
-    "navigate down by method/property/field
-    autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr>
-
-    " Contextual code actions (requires CtrlP or unite.vim)
-    autocmd FileType cs nnoremap <leader>oca :OmniSharpGetCodeActions<cr>
-
-    " Run code actions with text selected in visual mode to extract method
-    autocmd FileType cs vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
-
-    " rename with dialog
-    autocmd FileType cs nnoremap <leader>onm :OmniSharpRename<cr>
-    " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
-    autocmd FileType cs command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-
-    " Force OmniSharp to reload the solution. Useful when switching branches etc.
-    autocmd FileType cs nnoremap <leader>orl :OmniSharpReloadSolution<cr>
-    autocmd FileType cs nnoremap <leader>ocf :OmniSharpCodeFormat<cr>
-
-    " Load the current .cs file to the nearest project
-    autocmd FileType cs nnoremap <leader>otp :OmniSharpAddToProject<cr>
-
-    " (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
-    autocmd FileType cs nnoremap <leader>oss :OmniSharpStartServer<cr>
-    autocmd FileType cs nnoremap <leader>osp :OmniSharpStopServer<cr>
-
-    " Add syntax highlighting for types and interfaces
-    nnoremap <leader>th :OmniSharpHighlightTypes<cr>
-augroup END
-
-" Windows only stuff
-if has("win32")
-    behave mswin
-    set columns=140
-    set lines=40
-    set winaltkeys=yes
-
-    if !has("gui_running")
-        set term=xterm
-        set t_Co=256
-        let &t_AB="\e[48;5;%dm"
-        let &t_AF="\e[38;5;%dm"
-    endif
-
-    " Session stuffs
-    "set sessionoptions-=resize,winpos
-    " au GUIEnter * simalt ~x
-    "autocmd VIMEnter * :source $HOME/vimfiles/session.vim
-    "autocmd VIMLeave * :mksession! $HOME/vimfiles/session.vim
-
-	set shell=C:\Windows\system32\cmd.exe
-endif
-
-set guioptions=
-set guifont=Envy\ Code\ R:h10
 
 colorscheme onedark
 let g:airline_theme='onedark'

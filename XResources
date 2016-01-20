@@ -1,0 +1,88 @@
+! fonts
+#define f_pango                 DejaVu\ Sans\ 10
+#define f_regular               xft:DejaVu Sans Mono:size=10:style=Book
+#define f_bold                  xft:DejaVu Sans Mono:size=10:style=Bold
+#define f_italic                xft:DejaVu Sans Mono:size=10:style=Oblique
+#define f_bolditalic            xft:DejaVu Sans Mono:size=10:b:style=Bold Oblique
+
+! colours
+#define c_background            #212021
+#define c_foreground            #DDDDDD
+#define c_black                 #353535
+#define c_darkgrey              #666666
+#define c_darkred               #D81860
+#define c_red                   #F00060
+#define c_darkgreen             #B7CE42
+#define c_green                 #BDE077
+#define c_darkyellow            #FEA63C
+#define c_yellow                #FFE863
+#define c_darkblue              #6F99B4
+#define c_blue                  #7C96B0
+#define c_darkmagenta           #8B7B8B
+#define c_magenta               #D8BFD8
+#define c_darkcyan              #A7A15E
+#define c_cyan                  #F0E68C
+#define c_grey                  #DDDDDD
+#define c_white                 #FFFFFF
+
+! xft
+Xft.dpi:                        96
+Xft.antialias:                  true
+Xft.hinting:                    true
+Xft.hintstyle:                  hintslight
+Xft.rgba:                       rgb
+
+! urxvt
+URxvt*font:                     f_regular
+URxvt*boldFont:                 f_bold
+URxvt*italicFont:               f_italic
+URxvt*boldItalicFont:           f_bolditalic
+URxvt.letterSpace:              -1
+URxvt*saveLines:                10000
+URxvt*scrollBar:                false
+URxvt*loginShell:               true
+URxvt*secondaryScroll:          true
+URxvt*visualBell:               true
+URxvt*urgentOnBell:             true
+
+! rofi
+rofi.lines:                     5
+rofi.color-enabled:             true
+rofi.color-window:              c_background, c_background
+rofi.color-normal:              c_background, c_foreground, c_background, c_darkgrey, c_foreground
+rofi.color-active:              c_background, c_foreground, c_background, c_darkgrey, c_darkcyan
+rofi.color-urgent:              c_background, c_foreground, c_background, c_darkgrey, c_red
+rofi.separator-style:           none
+rofi.bw:                        0
+rofi.glob:                      true
+rofi.terminal:                  rxvt-unicode
+rofi.font:                      f_pango
+
+! colours
+*background:                    c_background
+*foreground:                    c_foreground
+!black
+*color0:                        c_black
+*color8:                        c_darkgrey
+!red
+*color1:                        c_darkred
+*color9:                        c_red
+!green
+*color2:                        c_darkgreen
+*color10:                       c_green
+!brown/yellow
+*color3:                        c_darkyellow
+*color11:                       c_yellow
+!blue
+*color4:                        c_darkblue
+*color12:                       c_blue
+!magenta
+*color5:                        c_darkmagenta
+*color13:                       c_magenta
+!cyan
+*color6:                        c_darkcyan
+*color14:                       c_cyan
+!white
+*color7:                        c_grey
+*color15:                       c_white
+
