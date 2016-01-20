@@ -7,7 +7,7 @@ call plug#begin()
 if has('lua')
     Plug 'Shougo/neocomplete'
 endif
-Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
+Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': './omnisharp-roslyn/build.sh' }
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'OrangeT/vim-csharp'
 Plug 'PProvost/vim-ps1'
@@ -74,8 +74,6 @@ set encoding=utf-8
 set termencoding=utf-8
 set shell=/bin/zsh
 set vb
-set t_vb=
-set t_Co=256
 set history=500
 set hidden
 
