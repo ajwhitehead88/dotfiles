@@ -18,6 +18,9 @@ function global:prompt {
 # Colours
 Import-Module PSColors
 
+# Tab Expansion
+Import-Module TabExpansionPlusPlus
+
 # ReadLine
 Import-Module PSReadline
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward

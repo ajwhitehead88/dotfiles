@@ -7,7 +7,7 @@ call plug#begin()
 if has('lua')
     Plug 'Shougo/neocomplete'
 endif
-Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': './omnisharp-roslyn/build.sh' }
+" Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': './omnisharp-roslyn/build.sh' }
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'OrangeT/vim-csharp'
 Plug 'PProvost/vim-ps1'
@@ -22,8 +22,7 @@ Plug 'gavocanov/vim-js-indent'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
-Plug 'joshdick/airline-onedark.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -395,6 +394,5 @@ endif
 set guioptions=
 set guifont=Envy\ Code\ R:h10
 
-colorscheme onedark
-let g:airline_theme='onedark'
+colorscheme Tomorrow-Night-Eighties
 set background=dark
