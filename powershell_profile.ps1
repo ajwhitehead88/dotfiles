@@ -23,6 +23,10 @@ Import-Module TabExpansionPlusPlus
 
 # ReadLine
 Import-Module PSReadline
+
+Set-PSReadlineOption -EditMode Emacs
+Set-PSReadlineOption -BellStyle Visual
+
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key Ctrl+D -Function DeleteCharOrExit
