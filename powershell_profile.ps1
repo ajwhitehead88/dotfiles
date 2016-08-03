@@ -19,7 +19,7 @@ function global:prompt {
 Import-Module PSColors
 
 # Tab Expansion
-Import-Module TabExpansionPlusPlus
+# Import-Module TabExpansionPlusPlus
 
 # ReadLine
 Import-Module PSReadline
