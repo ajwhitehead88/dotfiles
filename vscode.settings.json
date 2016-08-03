@@ -1,0 +1,16 @@
+// Place your settings in this file to overwrite the default settings
+{
+  "editor.fontFamily": "Envy Code R",
+  "editor.fontSize": 13,
+  "editor.tabSize": 2,
+  "editor.formatOnType": true,
+  "editor.renderWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/bin": true
+  }
+}
