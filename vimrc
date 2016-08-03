@@ -9,12 +9,14 @@ if has('lua')
 endif
 " Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': './omnisharp-roslyn/build.sh' }
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'KabbAmine/gulp-vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'PProvost/vim-ps1'
 Plug 'Smart-Tabs'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' , 'jsx' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
@@ -22,7 +24,6 @@ Plug 'gavocanov/vim-js-indent'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
-Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
