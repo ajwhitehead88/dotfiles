@@ -2,7 +2,7 @@
 {
   "editor.fontFamily": "Envy Code R",
   "editor.fontSize": 13,
-  "editor.tabSize": 2,
+  "editor.tabSize": 4,
   "editor.formatOnType": true,
   "editor.renderWhitespace": true,
   "files.trimTrailingWhitespace": true,
