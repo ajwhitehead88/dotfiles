@@ -16,7 +16,7 @@ function global:prompt {
 }
 
 # Colours
-Import-Module PSColors
+# Import-Module PSColors
 
 # Tab Expansion
 # Import-Module TabExpansionPlusPlus
