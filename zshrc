@@ -157,6 +157,3 @@ RPS1='$(git_prompt_string)%{$reset_color%}'
 
 PROMPT='%{$fg_bold[grey]%}%d %{$fg_bold[blue]%}» %{$reset_color%}'
 # RPROMPT="$(git_prompt_string)"
-
-# Load dnvm
-[ -s "~/.dnx/dnvm/dnvm.sh" ] && . "~/.dnx/dnvm/dnvm.sh"
