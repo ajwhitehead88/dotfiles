@@ -1,0 +1,43 @@
+[1mdiff --git a/Resharper.DotSettings b/Resharper.DotSettings[m
+[1mindex 3239c37..9ba3b61 100644[m
+[1m--- a/Resharper.DotSettings[m
+[1m+++ b/Resharper.DotSettings[m
+[36m@@ -28,15 +28,19 @@[m
+ 	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/FORCE_IFELSE_BRACES_STYLE/@EntryValue">ALWAYS_ADD</s:String>[m
+ 	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/FORCE_USING_BRACES_STYLE/@EntryValue">ALWAYS_ADD</s:String>[m
+ 	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/FORCE_WHILE_BRACES_STYLE/@EntryValue">ALWAYS_ADD</s:String>[m
+[31m-	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_BLANK_LINES_IN_CODE/@EntryValue">0</s:Int64>[m
+[32m+[m	[32m<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_BLANK_LINES_IN_CODE/@EntryValue">1</s:Int64>[m
+ 	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_BLANK_LINES_IN_DECLARATIONS/@EntryValue">1</s:Int64>[m
+ 	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/LINE_FEED_AT_FILE_END/@EntryValue">True</s:Boolean>[m
+ 	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/PLACE_WHILE_ON_NEW_LINE/@EntryValue">True</s:Boolean>[m
+ 	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SIMPLE_EMBEDDED_STATEMENT_STYLE/@EntryValue">LINE_BREAK</s:String>[m
+[32m+[m	[32m<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_AROUND_MULTIPLICATIVE_OP/@EntryValue">True</s:Boolean>[m
+ 	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_SINGLE_LINE_ARRAY_INITIALIZER_BRACES/@EntryValue">True</s:Boolean>[m
+ 	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/STICK_COMMENT/@EntryValue">False</s:Boolean>[m
+[32m+[m	[32m<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_LINES/@EntryValue">False</s:Boolean>[m
+ 	<s:String x:Key="/Default/CodeStyle/Naming/JavaScriptNaming/UserRules/=JS_005FBLOCK_005FSCOPE_005FCONSTANT/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>[m
+[32m+[m	[32m<s:String x:Key="/Default/CodeStyle/Naming/JavaScriptNaming/UserRules/=JS_005FBLOCK_005FSCOPE_005FFUNCTION/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>[m
+ 	<s:String x:Key="/Default/CodeStyle/Naming/JavaScriptNaming/UserRules/=JS_005FBLOCK_005FSCOPE_005FVARIABLE/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>[m
+[32m+[m	[32m<s:String x:Key="/Default/CodeStyle/Naming/JavaScriptNaming/UserRules/=JS_005FCLASS/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>[m
+ 	<s:String x:Key="/Default/CodeStyle/Naming/JavaScriptNaming/UserRules/=JS_005FCONSTRUCTOR/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;</s:String>[m
+ 	<s:String x:Key="/Default/CodeStyle/Naming/JavaScriptNaming/UserRules/=JS_005FFUNCTION/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>[m
+ 	<s:String x:Key="/Default/CodeStyle/Naming/JavaScriptNaming/UserRules/=JS_005FGLOBAL_005FVARIABLE/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;</s:String>[m
+[1mdiff --git a/powershell_profile.ps1 b/powershell_profile.ps1[m
+[1mindex 9bc96ee..8b8e905 100644[m
+[1m--- a/powershell_profile.ps1[m
+[1m+++ b/powershell_profile.ps1[m
+[36m@@ -27,6 +27,11 @@[m [mImport-Module PSReadline[m
+ Set-PSReadlineOption -EditMode Emacs[m
+ Set-PSReadlineOption -BellStyle Visual[m
+ [m
+[32m+[m[32mSet-PSReadlineKeyHandler -Key Ctrl+Shift+LeftArrow -Function SelectShellBackwardWord[m
+[32m+[m[32mSet-PSReadlineKeyHandler -Key Ctrl+Shift+RightArrow -Function SelectShellForwardWord[m
+[32m+[m[32mSet-PSReadlineKeyHandler -Key Ctrl+LeftArrow -Function ShellBackwardWord[m
+[32m+[m[32mSet-PSReadlineKeyHandler -Key Ctrl+RightArrow -Function ShellForwardWord[m
+[32m+[m[32mSet-PSReadlineKeyHandler -Key Ctrl+Backspace -Function ShellBackwardKillWord[m
+ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward[m
+ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward[m
+ Set-PSReadlineKeyHandler -Key Ctrl+D -Function DeleteCharOrExit[m
+warning: LF will be replaced by CRLF in Resharper.DotSettings.
+The file will have its original line endings in your working directory.
