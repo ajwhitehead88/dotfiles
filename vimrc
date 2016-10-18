@@ -70,7 +70,9 @@ if has('win32')
     set term=win32
     set directory=~/vimfiles/tmp
 else
-    set term=screen-256color
+    if !has('nvim')
+        set term=screen-256color
+    endif
     set directory=/tmp
 endif
 
