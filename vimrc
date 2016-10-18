@@ -69,7 +69,7 @@ set updatetime=500
 if has('win32')
     set term=win32
     set directory=~/vimfiles/tmp
-elseif !has('nvim')
+else
     set term=screen-256color
     set directory=/tmp
 endif
@@ -181,8 +181,12 @@ nmap <F2> :bnext<CR>
 imap <F1> <ESC>:bprev<CR>
 imap <F2> <ESC>:bnext<CR>
 
-" neocomplete
-if has('lua') && !has('nvim')
+" neocomplete / deoplete
+if has('nvim')
+    let g:deoplete#enable_at_startup=1
+    let g:deoplete#ignore_case=1
+    let g:deoplete#enable_smart_case=1
+elseif has('lua')
     let g:acp_enableAtStartup=0
     let g:neocomplete#enable_at_startup=1
     let g:neocomplete#enable_smart_case = 1
@@ -212,12 +216,6 @@ autocmd FileType html let b:closetag_html_style=1
 " netrw
 nmap <Leader>f :Ex<CR>
 
-" deoplete
-if has('nvim')
-    let g:deoplete#enable_at_startup=1
-    let g:deoplete#ignore_case=1
-    let g:deoplete#enable_smart_case=1
-endif
 "CtrlP
 if has('python')
     let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
@@ -402,7 +400,9 @@ if has("win32")
 	set shell=C:\Windows\system32\cmd.exe
 endif
 
-if !has('nvim')
+if has('nvim')
+    set termguicolors
+else
 	set guioptions=
 	set guifont=Envy\ Code\ R:h10
 endif
