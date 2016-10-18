@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2016-10-15 15:17:25" build="161009a">
+		<key name=".Vanilla" modified="2016-10-18 12:05:18" build="161009a">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -59,7 +59,7 @@
 			<value name="FontSize" type="ulong" data="13"/>
 			<value name="StatusFontHeight" type="long" data="12"/>
 			<value name="TabFontHeight" type="long" data="13"/>
-			<key name="HotKeys" modified="2016-10-15 15:17:25" build="161009a">
+			<key name="HotKeys" modified="2016-10-18 11:46:45" build="161009a">
 				<value name="MinimizeRestore" type="dword" data="000011c0"/>
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="0000005b"/>
@@ -284,6 +284,8 @@
 			<value name="StoreTaskbarCommands" type="hex" data="00"/>
 			<value name="SaveCmdHistory" type="hex" data="01"/>
 			<value name="CmdLineHistory" type="multi">
+				<line data="{Shells::PowerShell}"/>
+				<line data="{Bash::bash}"/>
 				<line data="{Shells::PowerShell (Admin)}"/>
 			</value>
 			<value name="ShowHelpTooltips" type="hex" data="01"/>
@@ -426,7 +428,7 @@
 			<value name="DragPanel" type="hex" data="02"/>
 			<value name="DragPanelBothEdges" type="hex" data="00"/>
 			<value name="KeyBarRClick" type="hex" data="01"/>
-			<value name="StatusBar.Show" type="hex" data="00"/>
+			<value name="StatusBar.Show" type="hex" data="01"/>
 			<value name="StatusBar.Flags" type="dword" data="00000002"/>
 			<value name="StatusFontFace" type="string" data="Segoe UI"/>
 			<value name="StatusFontCharSet" type="ulong" data="0"/>
@@ -463,12 +465,12 @@
 			<value name="StatusBar.Hide.ConEmuPID" type="hex" data="01"/>
 			<value name="StatusBar.Hide.ConEmuHWND" type="hex" data="01"/>
 			<value name="StatusBar.Hide.ConEmuView" type="hex" data="01"/>
-			<value name="StatusBar.Hide.Srv" type="hex" data="00"/>
+			<value name="StatusBar.Hide.Srv" type="hex" data="01"/>
 			<value name="StatusBar.Hide.SrvHWND" type="hex" data="01"/>
 			<value name="StatusBar.Hide.Transparency" type="hex" data="01"/>
 			<value name="StatusBar.Hide.New" type="hex" data="00"/>
-			<value name="StatusBar.Hide.Sync" type="hex" data="00"/>
-			<value name="StatusBar.Hide.Proc" type="hex" data="00"/>
+			<value name="StatusBar.Hide.Sync" type="hex" data="01"/>
+			<value name="StatusBar.Hide.Proc" type="hex" data="01"/>
 			<value name="StatusBar.Hide.Title" type="hex" data="01"/>
 			<value name="StatusBar.Hide.Time" type="hex" data="01"/>
 			<value name="StatusBar.Hide.Resize" type="hex" data="00"/>
@@ -567,9 +569,9 @@
 			<value name="Update.DownloadPath" type="string" data="%TEMP%\ConEmu"/>
 			<value name="Update.LeavePackages" type="hex" data="00"/>
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
-			<key name="Tasks" modified="2016-10-15 15:17:25" build="161009a">
+			<key name="Tasks" modified="2016-10-18 11:46:45" build="161009a">
 				<value name="Count" type="long" data="5"/>
-				<key name="Task1" modified="2016-10-15 15:17:25" build="161009a">
+				<key name="Task1" modified="2016-10-18 11:46:45" build="161009a">
 					<value name="Name" type="string" data="{Shells::PowerShell}"/>
 					<value name="Flags" type="dword" data="00000003"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -578,7 +580,16 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task2" modified="2016-10-15 15:17:25" build="161009a">
+				<key name="Task2" modified="2016-10-18 11:46:45" build="161009a">
+					<value name="Name" type="string" data="{Bash::bash}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data="-icon &quot;%USERPROFILE%\AppData\Local\lxss\bash.ico&quot;"/>
+					<value name="Cmd1" type="string" data="%windir%\system32\bash.exe -cur_console:p"/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+				</key>
+				<key name="Task3" modified="2016-10-18 11:46:45" build="161009a">
 					<value name="Name" type="string" data="{Shells::PowerShell (Admin)}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -587,31 +598,22 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task3" modified="2016-10-15 15:17:25" build="161009a">
+				<key name="Task4" modified="2016-10-18 11:46:45" build="161009a">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Cmd1" type="string" data="cmd.exe /k &quot;%ConEmuBaseDir%\CmdInit.cmd&quot;"/>
+					<value name="Cmd2" type="string" data="&quot;%windir%\syswow64\cmd.exe&quot; /k &quot;&quot;%ConEmuBaseDir%\CmdInit.cmd&quot; &amp; echo This is 32 bit cmd.exe -new_console:s50V&quot;"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task4" modified="2016-10-15 15:17:25" build="161009a">
+				<key name="Task5" modified="2016-10-18 11:46:45" build="161009a">
 					<value name="Name" type="string" data="{Shells::cmd (Admin)}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Cmd1" type="string" data="cmd.exe /k &quot;%ConEmuBaseDir%\CmdInit.cmd&quot; -new_console:a"/>
-					<value name="Cmd2" type="string" data="&quot;%windir%\syswow64\cmd.exe&quot; /k &quot;&quot;%ConEmuBaseDir%\CmdInit.cmd&quot; &amp; echo This is 32 bit cmd.exe -new_console:s50V&quot;"/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-				</key>
-				<key name="Task5" modified="2016-10-15 15:17:25" build="161009a">
-					<value name="Name" type="string" data="{Bash::Git bash}"/>
-					<value name="Flags" type="dword" data="00000000"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data="&quot;%ConEmuDir%\..\Git\git-cmd.exe&quot; --no-cd --command=usr/bin/bash.exe -l -i"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
@@ -652,14 +654,14 @@
 					<value name="Count" type="dword" data="00000001"/>
 				</key>
 			</key>
-			<key name="Apps" modified="2016-10-15 15:17:25" build="161009a">
+			<key name="Apps" modified="2016-10-18 11:46:45" build="161009a">
 				<value name="Count" type="long" data="0"/>
 			</key>
-			<key name="Colors" modified="2016-10-15 15:17:25" build="161009a">
+			<key name="Colors" modified="2016-10-18 11:46:45" build="161009a">
 				<value name="Count" type="long" data="0"/>
 			</key>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
-			<value name="LastMonitor" type="string" data="0,0,1920,1170"/>
+			<value name="LastMonitor" type="string" data="0,0,1920,1050"/>
 			<value name="VividColors" type="hex" data="01"/>
 			<value name="AnsiExecution" type="hex" data="01"/>
 			<value name="AnsiAllowedCommands" type="multi">

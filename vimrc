@@ -4,7 +4,9 @@ set nocompatible
 " vim-plug
 call plug#begin()
 
-if has('lua')
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim'
+elseif has('lua')
     Plug 'Shougo/neocomplete'
 endif
 " Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': './omnisharp-roslyn/build.sh' }
@@ -32,13 +34,15 @@ Plug 'othree/yajs.vim'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': [ 'markdown' ] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-shell'
+if !has('nvim')
+    Plug 'tpope/vim-dispatch'
+    Plug 'xolox/vim-misc'
+    Plug 'xolox/vim-shell'
+endif
 
 call plug#end()
 
@@ -62,10 +66,10 @@ set previewheight=5
 set selection=inclusive
 set updatetime=500
 
-if has("win32")
+if has('win32')
     set term=win32
     set directory=~/vimfiles/tmp
-else
+elseif !has('nvim')
     set term=screen-256color
     set directory=/tmp
 endif
@@ -178,7 +182,7 @@ imap <F1> <ESC>:bprev<CR>
 imap <F2> <ESC>:bnext<CR>
 
 " neocomplete
-if has('lua')
+if has('lua') && !has('nvim')
     let g:acp_enableAtStartup=0
     let g:neocomplete#enable_at_startup=1
     let g:neocomplete#enable_smart_case = 1
@@ -208,6 +212,12 @@ autocmd FileType html let b:closetag_html_style=1
 " netrw
 nmap <Leader>f :Ex<CR>
 
+" deoplete
+if has('nvim')
+    let g:deoplete#enable_at_startup=1
+    let g:deoplete#ignore_case=1
+    let g:deoplete#enable_smart_case=1
+endif
 "CtrlP
 if has('python')
     let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
@@ -392,8 +402,10 @@ if has("win32")
 	set shell=C:\Windows\system32\cmd.exe
 endif
 
-set guioptions=
-set guifont=Envy\ Code\ R:h10
+if !has('nvim')
+	set guioptions=
+	set guifont=Envy\ Code\ R:h10
+endif
 
 colorscheme Tomorrow-Night-Eighties
 set background=dark
