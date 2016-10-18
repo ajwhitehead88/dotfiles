@@ -9,9 +9,9 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'pacman' \
   'git' \
-  'tmux' \
-  'ssh' \
-  'utility' \
+#  'tmux' \
+#  'ssh' \
+#  'utility' \
   'completion' \
   'syntax-highlighting' \
   'prompt'
@@ -45,6 +45,6 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Tmux
-zstyle ':prezto:module:tmux:auto-start' local 'yes'
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+#zstyle ':prezto:module:tmux:auto-start' local 'yes'
+#zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 

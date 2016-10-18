@@ -4,7 +4,7 @@ set nocompatible
 " vim-plug
 call plug#begin()
 
-if has('nvim')
+if has('nvim') && has('python3')
     Plug 'Shougo/deoplete.nvim'
 elseif has('lua')
     Plug 'Shougo/neocomplete'
