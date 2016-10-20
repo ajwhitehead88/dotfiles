@@ -83,12 +83,11 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
 # completion
-autoload -U compinit
-compinit
+autoload -U compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # colours
-autoload -U colors
-colors
+autoload -U colors && colors
 
 # prompt
 setopt prompt_subst
@@ -156,4 +155,3 @@ git_prompt_string() {
 RPS1='$(git_prompt_string)%{$reset_color%}'
 
 PROMPT='%{$fg_bold[grey]%}%d %{$fg_bold[blue]%}» %{$reset_color%}'
-# RPROMPT="$(git_prompt_string)"
