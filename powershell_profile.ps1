@@ -15,6 +15,9 @@ function global:prompt {
     return "> "
 }
 
+# Start agent
+pageant.exe $HOME\.ssh\id_rsa.ppk
+
 # Colours
 # Import-Module PSColors
 
