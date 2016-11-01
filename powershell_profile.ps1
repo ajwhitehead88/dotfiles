@@ -1,5 +1,8 @@
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
+# Set the encoding
+[Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
+
 # Load posh-git module from current directory
 Import-Module posh-git
 
