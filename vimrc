@@ -67,7 +67,9 @@ set selection=inclusive
 set updatetime=500
 
 if has('win32')
-    set term=win32
+    if !has('nvim')
+        set term=win32
+    endif
     set directory=~/vimfiles/tmp
 else
     if !has('nvim')
@@ -393,7 +395,9 @@ if has("win32")
     set winaltkeys=yes
 
     if !has("gui_running")
-        set term=xterm
+        if !has('nvim')
+            set term=xterm
+        endif
         set t_Co=256
         let &t_AB="\e[48;5;%dm"
         let &t_AF="\e[38;5;%dm"
@@ -412,7 +416,7 @@ if has('nvim')
     set termguicolors
 else
 	set guioptions=
-	set guifont=Envy\ Code\ R:h10
+    set guifont=Envy\ Code\ R:h10
 endif
 
 colorscheme Tomorrow-Night-Eighties
