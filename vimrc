@@ -31,6 +31,7 @@ Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
@@ -135,7 +136,6 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType javascript,jsx setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript,jsx setlocal ts=2 sts=2 sw=2
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
 " bindings

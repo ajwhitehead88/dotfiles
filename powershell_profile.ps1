@@ -15,7 +15,17 @@ function global:prompt {
     Write-VcsStatus
 
     $global:LASTEXITCODE = $realLASTEXITCODE
-    return "> "
+
+    if ( $realLASTEXITCODE -eq 0 )
+    {
+        Write-Host ">" -NoNewline -ForegroundColor Green
+    }
+    else
+    {
+        Write-Host ">" -NoNewline -ForegroundColor Red
+    }
+
+    return " "
 }
 
 # Start agent

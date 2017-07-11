@@ -4,7 +4,7 @@
   "editor.fontSize": 13,
   "editor.tabSize": 4,
   "editor.formatOnType": true,
-  "editor.renderWhitespace": true,
+  "editor.renderWhitespace": "all",
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
     "**/.git": true,
@@ -12,5 +12,8 @@
     "**/dist": true,
     "**/node_modules": true,
     "**/bin": true
-  }
+  },
+"vsicons.presets.angular": false,
+"workbench.iconTheme": "material-icon-theme",
+"vsicons.projectDetection.autoReload": true
 }
