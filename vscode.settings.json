@@ -15,5 +15,7 @@
   },
 "vsicons.presets.angular": false,
 "workbench.iconTheme": "material-icon-theme",
-"vsicons.projectDetection.autoReload": true
+"vsicons.projectDetection.autoReload": true,
+"vim.disableAnnoyingNeovimMessage": true,
+"workbench.startupEditor": "newUntitledFile"
 }
