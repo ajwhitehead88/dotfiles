@@ -68,3 +68,9 @@ nmap q? <Nop>
 nnoremap Y y$
 
 set winaltkeys=yes
+
+" VISUAL STUDIO ACTIONS
+nmap <Leader>gi :vsc Edit.GoToImplementation<CR>
+nmap <Leader>gr :vsc Edit.FindAllReferences<CR>
+nmap <Leader>gp :vsc Edit.PeekDefinition<CR>
+nmap <Leader>rr :vsc Refactor.Rename<cr>
