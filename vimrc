@@ -66,6 +66,7 @@ set wmh=0
 set previewheight=5
 set selection=inclusive
 set updatetime=500
+set lazyredraw
 
 if has('win32')
     if !has('nvim')
