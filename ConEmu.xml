@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2017-06-29 15:49:24" build="161206">
+		<key name=".Vanilla" modified="2017-07-11 17:17:31" build="161206">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -282,11 +282,11 @@
 			<value name="UseClink" type="hex" data="01"/>
 			<value name="StoreTaskbarkTasks" type="hex" data="00"/>
 			<value name="StoreTaskbarCommands" type="hex" data="00"/>
-			<value name="SaveCmdHistory" type="hex" data="01"/>
+			<value name="SaveCmdHistory" type="hex" data="00"/>
 			<value name="CmdLineHistory" type="multi">
-				<line data="{Bash::bash}"/>
 				<line data="{Shells::PowerShell}"/>
 				<line data="{Shells::PowerShell (Admin)}"/>
+				<line data="{Bash::bash}"/>
 			</value>
 			<value name="ShowHelpTooltips" type="hex" data="01"/>
 			<value name="Multi" type="hex" data="01"/>
