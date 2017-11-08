@@ -30,6 +30,7 @@
 	staaash = stash --all
 	st = status --short --branch
 	merc = merge --no-ff
+	prune = fetch --prune
 [difftool "sourcetree"]
 	cmd = 'c:/Program Files (x86)/Meld/meld.exe' $LOCAL $REMOTE
 [mergetool "sourcetree"]
