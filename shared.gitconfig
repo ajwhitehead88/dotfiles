@@ -31,6 +31,7 @@
 	st = status --short --branch
 	merc = merge --no-ff
 	conflicts = diff --name-only --diff-filter=U
+	prune = fetch --prune
 [difftool "sourcetree"]
 	cmd = 'C:/Program Files (x86)/Meld/meld.exe' $LOCAL $REMOTE
 [mergetool "sourcetree"]
