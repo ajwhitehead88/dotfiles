@@ -12,14 +12,14 @@
 [mergetool]
     prompt = false
 [mergetool "meld"]
-    path = C:/Program Files (x86)/Meld/Meld.exe
+    path = 'C:/Program Files (x86)/Meld/Meld.exe'
 [diff]
     tool = meld
     guitool = meld
 [difftool]
     prompt = false
 [difftool "meld"]
-    path = C:/Program Files (x86)/Meld/Meld.exe
+    path = 'C:/Program Files (x86)/Meld/Meld.exe'
 	trustExitCode = false
 [alias]
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
@@ -30,8 +30,9 @@
 	staaash = stash --all
 	st = status --short --branch
 	merc = merge --no-ff
+	conflicts = diff --name-only --diff-filter=U
 [difftool "sourcetree"]
-	cmd = 'c:/Program Files (x86)/Meld/meld.exe' $LOCAL $REMOTE
+	cmd = 'C:/Program Files (x86)/Meld/meld.exe' $LOCAL $REMOTE
 [mergetool "sourcetree"]
-	cmd = 'c:/Program Files (x86)/Meld/meld.exe' $LOCAL $MERGED $REMOTE
+	cmd = 'C:/Program Files (x86)/Meld/meld.exe' $LOCAL $MERGED $REMOTE
 	trustExitCode = true
