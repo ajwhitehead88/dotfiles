@@ -30,7 +30,7 @@ function global:prompt {
 
 # Start agent
 $keys = Get-ChildItem $HOME\.ssh\*.ppk | Select -ExpandProperty FullName
-if ( keys ) {
+if ( $keys ) {
     pageant.exe $keys
 }
 
