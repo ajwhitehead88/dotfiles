@@ -29,7 +29,10 @@ function global:prompt {
 }
 
 # Start agent
-pageant.exe $HOME\.ssh\id_rsa.ppk
+$keys = Get-ChildItem $HOME\.ssh\*.ppk | Select -ExpandProperty FullName
+if ( keys ) {
+    pageant.exe $keys
+}
 
 # Colours
 # Import-Module PSColors
