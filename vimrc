@@ -18,7 +18,7 @@ Plug 'vim-scripts/Smart-Tabs'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'joshdick/onedark.vim'
 Plug 'vim-scripts/closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' , 'jsx' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
@@ -420,5 +420,5 @@ else
     set guifont=Envy\ Code\ R:h10
 endif
 
-colorscheme Tomorrow-Night-Eighties
+colorscheme onedark
 set background=dark
