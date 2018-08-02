@@ -55,7 +55,4 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key Ctrl+D -Function DeleteCharOrExit
 
-function mklink { cmd /c mklink $args }
-function editconflicts { git diff --name-only | Sort-Object -Unique | % { gvim $_ } }
-
 Pop-Location
