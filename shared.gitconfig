@@ -1,7 +1,7 @@
 [core]
 	autocrlf = true
 	longpaths = true
-	editor = /C/Program Files (x86)/Vim/vim80/vim.exe
+	editor = 'C:/Program Files (x86)/Vim/vim80/gvim.exe' -f -i NONE
 	excludesfile =
 [push]
 	default = current
@@ -12,14 +12,14 @@
 [mergetool]
     prompt = false
 [mergetool "meld"]
-	path = /c/Program Files (x86)/meld/meld.exe
+	path = 'C:/Program Files (x86)/meld/meld.exe'
 [diff]
     tool = meld
     guitool = meld
 [difftool]
     prompt = false
 [difftool "meld"]
-	path = /c/Program Files (x86)/meld/meld.exe
+	path = 'C:/Program Files (x86)/meld/meld.exe'
 	trustExitCode = false
 [alias]
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`

@@ -11,10 +11,8 @@ elseif has('lua')
 endif
 " Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': './omnisharp-roslyn/build.sh' }
 Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'KabbAmine/gulp-vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'PProvost/vim-ps1'
-Plug 'vim-scripts/Smart-Tabs'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim'
@@ -22,21 +20,19 @@ Plug 'joshdick/onedark.vim'
 Plug 'vim-scripts/closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' , 'jsx' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
-Plug 'gavocanov/vim-js-indent'
-Plug 'gorodinskiy/vim-coloresque'
-Plug 'hail2u/vim-css3-syntax'
+Plug 'gko/vim-coloresque'
+Plug 'hail2u/vim-css3-syntax', { 'for': ['css']}
 Plug 'jiangmiao/auto-pairs'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'othree/html5.vim'
-Plug 'othree/yajs.vim'
-Plug 'pangloss/vim-javascript'
+Plug 'othree/html5.vim', { 'for': [ 'html', 'html.handlebars', 'html.mustache' ] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': [ 'markdown' ] }
+Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 if !has('nvim')
@@ -67,6 +63,7 @@ set previewheight=5
 set selection=inclusive
 set updatetime=500
 set lazyredraw
+set nowrap
 
 if has('win32')
     if !has('nvim')
@@ -83,15 +80,12 @@ endif
 set encoding=utf-8
 set termencoding=utf-8
 set shell=/bin/zsh
-set vb
+set visualbell
 set history=500
 set hidden
 
 set nobackup
 set nowritebackup
-
-set nowrap
-set lbr
 
 set wildmode=list:longest,full " Better completion
 set wildignore=*.svn,*.git,*\\tmp\\*,*.swp,*.zip,*.exe
@@ -99,7 +93,6 @@ set completeopt=longest,menuone,preview
 set pastetoggle=<F4>
 
 set autoindent
-" set smartindent
 set expandtab
 set copyindent
 set preserveindent
@@ -112,7 +105,7 @@ set shiftround
 set incsearch
 set ignorecase
 set smartcase
-set hls
+set hlsearch
 
 set backspace=indent,eol,start
 set showmatch
@@ -296,7 +289,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_powerline_fonts=0
 
-let g:airline_extensions = ['branch', 'tabline', 'syntastic']
+let g:airline_extensions = ['branch', 'tabline'] ", 'syntastic']
 
 let g:airline#extensions#branch#enabled=1
 
