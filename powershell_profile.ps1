@@ -6,39 +6,8 @@ Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 # Load posh-git module from current directory
 Import-Module posh-git
 
-# Set up a simple prompt, adding the git prompt parts inside git repos
-function global:prompt {
-    $realLASTEXITCODE = $LASTEXITCODE
-
-    Write-Host($pwd.ProviderPath) -nonewline
-
-    Write-VcsStatus
-
-    $global:LASTEXITCODE = $realLASTEXITCODE
-
-    if ( $realLASTEXITCODE -eq 0 )
-    {
-        Write-Host ">" -NoNewline -ForegroundColor Green
-    }
-    else
-    {
-        Write-Host ">" -NoNewline -ForegroundColor Red
-    }
-
-    return " "
-}
-
-# Start agent
-#$keys = Get-ChildItem $HOME\.ssh\*.ppk | Select -ExpandProperty FullName
-#if ( $keys ) {
-#    pageant.exe $keys
-#}
-
-# Colours
-# Import-Module PSColors
-
-# Tab Expansion
-# Import-Module TabExpansionPlusPlus
+$GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+$GitPromptSettings.DefaultPromptPath.ForegroundColor = 'Orange'
 
 # ReadLine
 Import-Module PSReadline
