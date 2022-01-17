@@ -6,17 +6,13 @@ call plug#begin()
 
 if has('nvim') && has('python3')
     Plug 'Shougo/deoplete.nvim'
-elseif has('lua')
-    Plug 'Shougo/neocomplete'
 endif
-" Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': './omnisharp-roslyn/build.sh' }
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'OrangeT/vim-csharp'
 Plug 'PProvost/vim-ps1'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'vim-scripts/closetag.vim', { 'for': [ 'html', 'xml', 'xsl', 'html.handlebars', 'html.mustache', 'cshtml' , 'jsx' ] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
@@ -27,7 +23,11 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'othree/html5.vim', { 'for': [ 'html', 'html.handlebars', 'html.mustache' ] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'scrooloose/syntastic'
+if has('nvim')
+    Plug 'neomake/neomake'
+else
+    Plug 'scrooloose/syntastic'
+endif
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -40,6 +40,7 @@ if !has('nvim')
     Plug 'xolox/vim-misc'
     Plug 'xolox/vim-shell'
 endif
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
@@ -182,26 +183,8 @@ imap <F2> <ESC>:bnext<CR>
 " neocomplete / deoplete
 if has('nvim')
     let g:deoplete#enable_at_startup=1
-    let g:deoplete#ignore_case=1
-    let g:deoplete#enable_smart_case=1
-elseif has('lua')
-    let g:acp_enableAtStartup=0
-    let g:neocomplete#enable_at_startup=1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 2
-    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-    " Define keyword.
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-    " Enable heavy omni completion.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
+    call g:deoplete#custom#option("ignore_case", v:true)
+    call g:deoplete#custom#option("smart_case", v:true)
 endif
 
 " vim-json
@@ -266,20 +249,15 @@ endfunction
 " indent guides
 let g:indent_guides_enable_on_vim_startup=1
 
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=0
-let g:syntastic_check_on_wq=0
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_sass_checkers=['scss_lint']
-let g:syntastic_scss_checkers=['scss_lint']
-let g:syntastic_css_checkers=['csslint']
-let g:syntastic_sass_scss_lint_args='-x Indentation'
-let g:syntastic_scss_scss_lint_args='-x Indentation'
-let g:syntastic_cs_checkers = ['code_checker']
-
-autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+if has('nvim')
+    call neomake#configure#automake('nrwi', 500)
+else
+    " syntastic
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+endif
 
 " jsx
 let g:jsx_ext_required = 0
@@ -315,72 +293,6 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
-"OmniSharp
-"let g:OmniSharp_selector_ui = 'ctrlp'"
-"let g:OmniSharp_server_type = 'roslyn'
-"
-"augroup omnisharp_commands
-"    autocmd!
-"
-"    "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-"    autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-"
-"    " Builds can also run asynchronously with vim-dispatch installed
-"    autocmd FileType cs nnoremap <leader>ob :wa!<cr>:OmniSharpBuildAsync<cr>
-"
-"    " Automatically add new cs files to the nearest project on save
-"    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
-"
-"    "show type information automatically when the cursor stops moving
-"    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-"
-"    "The following commands are contextual, based on the current cursor position.
-"    autocmd FileType cs nnoremap <leader>ogd :OmniSharpGotoDefinition<cr>
-"    autocmd FileType cs nnoremap <leader>ofi :OmniSharpFindImplementations<cr>
-"    autocmd FileType cs nnoremap <leader>oft :OmniSharpFindType<cr>
-"    autocmd FileType cs nnoremap <leader>ofs :OmniSharpFindSymbol<cr>
-"    autocmd FileType cs nnoremap <leader>ofu :OmniSharpFindUsages<cr>
-"
-"    "finds members in the current buffer
-"    autocmd FileType cs nnoremap <leader>ofm :OmniSharpFindMembers<cr>
-"
-"    " cursor can be anywhere on the line containing an issue
-"    autocmd FileType cs nnoremap <leader>ox  :OmniSharpFixIssue<cr>
-"    autocmd FileType cs nnoremap <leader>ofx :OmniSharpFixUsings<cr>
-"    autocmd FileType cs nnoremap <leader>ott :OmniSharpTypeLookup<cr>
-"    autocmd FileType cs nnoremap <leader>odc :OmniSharpDocumentation<cr>
-"
-"    "navigate up by method/property/field
-"    autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr>
-"    "navigate down by method/property/field
-"    autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr>
-"
-"    " Contextual code actions (requires CtrlP or unite.vim)
-"    autocmd FileType cs nnoremap <leader>oca :OmniSharpGetCodeActions<cr>
-"
-"    " Run code actions with text selected in visual mode to extract method
-"    autocmd FileType cs vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
-"
-"    " rename with dialog
-"    autocmd FileType cs nnoremap <leader>onm :OmniSharpRename<cr>
-"    " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
-"    autocmd FileType cs command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-"
-"    " Force OmniSharp to reload the solution. Useful when switching branches etc.
-"    autocmd FileType cs nnoremap <leader>orl :OmniSharpReloadSolution<cr>
-"    autocmd FileType cs nnoremap <leader>ocf :OmniSharpCodeFormat<cr>
-"
-"    " Load the current .cs file to the nearest project
-"    autocmd FileType cs nnoremap <leader>otp :OmniSharpAddToProject<cr>
-"
-"    " (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
-"    autocmd FileType cs nnoremap <leader>oss :OmniSharpStartServer<cr>
-"    autocmd FileType cs nnoremap <leader>osp :OmniSharpStopServer<cr>
-"
-"    " Add syntax highlighting for types and interfaces
-"    nnoremap <leader>th :OmniSharpHighlightTypes<cr>
-"augroup END
-
 " Windows only stuff
 if has("win32")
     behave mswin
@@ -410,8 +322,8 @@ if has('nvim')
     set termguicolors
 else
 	set guioptions=
-    set guifont=Envy\ Code\ R:h10
+    set guifont=Hack:h10
 endif
 
-colorscheme onedark
+colorscheme dracula
 set background=dark
