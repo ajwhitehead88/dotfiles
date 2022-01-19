@@ -28,7 +28,6 @@ if has('nvim')
 else
     Plug 'scrooloose/syntastic'
 endif
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': [ 'markdown' ] }
@@ -139,7 +138,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 let mapleader=" "
 
 " sudo save
-cmap w!! w !sudo tee % >/dev/null
+" cmap w!! w !sudo tee % >/dev/null
 
 " Unmap annoying keys
 nmap q: <Nop>
