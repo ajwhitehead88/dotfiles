@@ -39,7 +39,7 @@ if !has('nvim')
     Plug 'xolox/vim-misc'
     Plug 'xolox/vim-shell'
 endif
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
@@ -324,5 +324,5 @@ else
     set guifont=Hack:h10
 endif
 
-colorscheme dracula
+colorscheme onedark
 set background=dark
