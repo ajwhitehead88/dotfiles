@@ -13,8 +13,8 @@ zplug check || zplug install
 
 zplug load
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # exports
 export EDITOR=nvim
@@ -28,7 +28,7 @@ alias :q="exit"
 alias :q!="exit"
 alias vim="nvim"
 alias vi="nvim"
-alias vim="nvim"
+alias gvim="nvim"
 alias sudo="sudo -E"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
@@ -81,8 +81,8 @@ unsetopt hist_verify
 # bindings
 bindkey -v
 
-bindkey "$terminfo[kLFT5]" backward-word
-bindkey "$terminfo[kRIT5]" forward-word
+#bindkey "$terminfo[kLFT5]" backward-word
+#bindkey "$terminfo[kRIT5]" forward-word
 
 # history
 autoload history-search-end
@@ -95,8 +95,8 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "$key[Up]" up-line-or-beginning-search
-bindkey "$key[Down]" down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 # completion
 autoload -U compinit && compinit
