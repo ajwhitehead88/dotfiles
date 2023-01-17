@@ -81,20 +81,28 @@ unsetopt hist_verify
 # bindings
 bindkey -v
 
-#bindkey "$terminfo[kLFT5]" backward-word
-#bindkey "$terminfo[kRIT5]" forward-word
+bindkey "$terminfo[kLFT5]" backward-word
+bindkey "$terminfo[kRIT5]" forward-word
 
 # history
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
+_history-incremental-search-backward() {
+  zle .history-incremental-search-backward $BUFFER
+}
+
+zle -N history-incremental-search-backward _history-incremental-search-backward
 bindkey '^R' history-incremental-search-backward
+
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+# bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
+# bindkey "$terminfo[kcud1]" down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
