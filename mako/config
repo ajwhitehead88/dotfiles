@@ -1,0 +1,11 @@
+font=Roboto 12
+background-color=#2B303B80
+text-color=#FFFFFF
+border-size=0
+padding=10
+
+default-timeout=5000
+
+[urgency=high]
+ignore-timeout=1
+background-color=#EB4D4B80
