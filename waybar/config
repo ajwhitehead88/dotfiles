@@ -79,7 +79,7 @@
         "on-click": "pavucontrol"
     },
     "custom/pacman": {
-      "interval": 5,
+      "interval": 3600,
       "exec": "~/.config/waybar/pacman",
       "on-click": "foot sudo paru -Syu; pkill -SIGRTMIN+8 waybar ",
       "signal": 8

@@ -37,8 +37,12 @@ set $bemenuflags --binding vim \
   --sb '#000000'  --sf '$cl_high' \
   --hb '$cl_back' --hf '$cl_high'
 
+set $bg_image ~/.images/bg.jpg
+set $lock_image ~/.images/lock.jpg
+
 set $menu cat ~/.config/programs | bemenu $bemenuflags | xargs swaymsg exec --
 set $allmenu bemenu-run --no-exec $bemenuflags | xargs swaymsg exec --
+set $lock swaylock -f -i $lock_image
 
 # Colors                border   bg       text     indi     childborder
 client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
@@ -58,11 +62,19 @@ gaps inner 10
 exec mako
 exec autotiling-rs
 exec slack --startup
+exec discord --start-minimized
+exec swayidle -w \
+                timeout 300 '$lock' \
+                timeout 600 'swaymsg "output * dpms off"' \
+                     resume 'swaymsg "output * dpms on"' \
+                before-sleep '$lock'
+
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.images/bg.jpg fill
+output * bg $bg_image fill
 #
 # Example configuration:
 #
@@ -98,6 +110,11 @@ input "type:touchpad" {
 input "type:keyboard" {
     xkb_layout gb
 }
+
+input "2:10:TPPS/2_Elan_TrackPoint" {
+    pointer_accel -0.3
+}
+
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -125,6 +142,9 @@ input "type:keyboard" {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+
+    # Lock
+    bindsym $mod+x exec $lock
 
     # Exit sway (logs you out of your Wayland session)
     set $swaynag 'You pressed the exit shortcut. Do you really want to exit sway? Yes (Return) or No (Escape).'
@@ -261,7 +281,7 @@ bindsym XF86Display exec systemctl suspend
 bindsym XF86WLAN exec notify-send 'Airplane toggled'
 bindsym XF86Messenger exec slack
 bindsym XF86Go exec toggle-sink
-bindsym Cancel exec notify-send 'TODO?'
+bindsym Cancel exec playerctl play-pause
 bindsym XF86Favorites exec $menu
 bindsym Print exec grim - | swappy -f -
 bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -
@@ -289,5 +309,7 @@ bar {
     #     inactive_workspace #32323200 #32323200 #5c5c5c
     # }
 }
+
+for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
 
 include /etc/sway/config.d/*
