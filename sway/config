@@ -62,11 +62,14 @@ gaps inner 10
 exec mako
 exec autotiling-rs
 exec slack --startup
+exec discord --start-minimized
 exec swayidle -w \
                 timeout 300 '$lock' \
                 timeout 600 'swaymsg "output * dpms off"' \
                      resume 'swaymsg "output * dpms on"' \
                 before-sleep '$lock'
+
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 ### Output configuration
 #
@@ -278,7 +281,7 @@ bindsym XF86Display exec systemctl suspend
 bindsym XF86WLAN exec notify-send 'Airplane toggled'
 bindsym XF86Messenger exec slack
 bindsym XF86Go exec toggle-sink
-bindsym Cancel exec notify-send 'TODO?'
+bindsym Cancel exec playerctl play-pause
 bindsym XF86Favorites exec $menu
 bindsym Print exec grim - | swappy -f -
 bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -

@@ -1,5 +1,5 @@
 #!/bin/bash
-TOTAL=$(paru -Qu | wc -l)
+TOTAL=$(checkupdates | wc -l)
 
 if [ $TOTAL != 0 ]; then
   echo "$TOTAL ";
