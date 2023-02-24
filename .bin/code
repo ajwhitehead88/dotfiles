@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/code "$@" --ozone-platform-hint=auto

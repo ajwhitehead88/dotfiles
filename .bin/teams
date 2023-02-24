@@ -1,0 +1,2 @@
+#!/bin/sh
+chromium --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo --ozone-platform-hint=auto --enable-features=WebRTCPipeWireCapturer
