@@ -1,0 +1,65 @@
+{
+  "$help": "https://aka.ms/terminal-documentation",
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "actions": [],
+  "copyOnSelect": true,
+  "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+  "profiles": {
+    "defaults": {
+      "colorScheme": "Nord",
+      "font": {
+        "face": "Hack",
+        "size": 10.0
+      }
+    },
+    "list": [
+      {
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "name": "Windows PowerShell"
+      },
+      {
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "hidden": false,
+        "name": "Command Prompt"
+      },
+      {
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+        "hidden": false,
+        "name": "Ubuntu",
+        "source": "Windows.Terminal.Wsl"
+      }
+    ]
+  },
+  "schemes": [
+    {
+      "name": "Nord",
+
+      "foreground": "#D8DEE9",
+      "background": "#2E3440",
+
+      "selectionBackground": "#434C5E",
+      "cursorColor": "#81A1C1",
+
+      "black": "#3B4252",
+      "red": "#BF616A",
+      "green": "#A3BE8C",
+      "yellow": "#EBCB8B",
+      "blue": "#81A1C1",
+      "purple": "#B48EAD",
+      "cyan": "#88C0D0",
+      "white": "#E5E9F0",
+
+      "brightBlack": "#4C566A",
+      "brightRed": "#BF616A",
+      "brightGreen": "#A3BE8C",
+      "brightYellow": "#EBCB8B",
+      "brightBlue": "#81A1C1",
+      "brightPurple": "#B48EAD",
+      "brightCyan": "#8FBCBB",
+      "brightWhite": "#ECEFF4"
+    }
+  ],
+  "theme": "system",
+  "themes": []
+}
