@@ -8,26 +8,35 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term foot
 
-set $cl_high #009ddc
-set $cl_indi #d9d8d8
-set $cl_back #231f20
-set $cl_fore #d9d8d8
-set $cl_urge #ee2e24
+set $font pango:Roboto 11
 
-set $font pango:Roboto 12
+set $bg #353C4A
+set $fg #D8DEE9
+set $accent #4C5763
+set $highlight #5E81AC
+set $indicator #8FBCBB
+
+## class                border			backgr			text				indicator			child_border
+client.focused          $indicator	$accent			#ffffff			$indicator	 	$highlight
+client.focused_inactive $bg 				$bg 				$fg 				$indicator		$accent
+client.unfocused        $bg 				$bg 				$fg 				$indicator		$accent
+client.urgent           $bg 				$bg 				$fg 				$indicator		$accent
+client.placeholder      $bg 				$bg 				$fg 				$indicator		$accent
+
+client.background       #ffffff
+
+font $font
 
 set $bemenuflags --binding vim \
   --prompt '' \
-  --fn 'pango:Hack 11' \
-  --tb '#000000'  --tf '$cl_high' \
-  --fb '#000000'  --ff '$cl_fore' \
+  --fn '$font' \
+  --tb '#000000'  --tf '$accent' \
+  --fb '#000000'  --ff '$fg' \
   --nb '#000000'  --nf '#AAAAAA' \
   --ab '#000000'  --af '#AAAAAA' \
-  --sb '#000000'  --sf '$cl_high' \
-  --hb '$cl_back' --hf '$cl_high'
+  --sb '#000000'  --sf '$accent' \
+  --hb '$bg' --hf '$highlight'
 
 set $bg_image ~/.images/bg.jpg
 set $lock_image ~/.images/lock.jpg
@@ -36,15 +45,7 @@ set $menu cat ~/.config/programs | bemenu $bemenuflags | xargs swaymsg exec --
 set $allmenu bemenu-run --no-exec $bemenuflags | xargs swaymsg exec --
 set $lock swaylock -f -i $lock_image
 
-# Colors                border   bg       text     indi     childborder
-client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
-client.focused_inactive $cl_back $cl_back $cl_fore $cl_back $cl_back
-client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
-client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
-
-font $font
-
-default_border pixel 1
+default_border pixel 2
 default_floating_border normal
 hide_edge_borders smart
 
@@ -84,7 +85,7 @@ input "type:keyboard" {
 
 ### Key bindings
 # Basics:
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec foot
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+d exec $allmenu
