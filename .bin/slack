@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/slack "$@" --ozone-platform-hint=auto --enable-features=WebRTCPipeWireCapturer
