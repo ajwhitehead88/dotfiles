@@ -119,3 +119,4 @@ autoload -U colors && colors
 RPROMPT='$(gitprompt)'
 
 PROMPT='%{$fg[yellow]%}%~%{$fg_bold[white]%}> %{$reset_color%}'
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

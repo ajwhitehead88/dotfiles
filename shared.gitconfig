@@ -4,6 +4,8 @@
 	longpaths = true
 	editor = nvim
 	excludesfile =
+[pull]
+  rebase = true
 [push]
 	default = current
 [fetch]
