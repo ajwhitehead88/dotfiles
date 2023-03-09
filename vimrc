@@ -18,7 +18,7 @@ if has('nvim')
   Plug 'neomake/neomake'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'mengelbrecht/lightline-bufferline'
-  " Plug 'shaunsingh/nord.nvim'
+  Plug 'shaunsingh/nord.nvim'
 else
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'scrooloose/syntastic'
@@ -26,9 +26,8 @@ else
   Plug 'tpope/vim-dispatch'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-shell'
-  " Plug 'nordtheme/vim'
+  Plug 'nordtheme/vim'
 endif
-Plug 'nordtheme/vim'
 
 call plug#end()
 
