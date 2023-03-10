@@ -68,7 +68,7 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 ### Output configuration
 output * bg $bg_image fill
-output eDP-1 scale 1.5
+output eDP-1 scale 1.25
 
 ### Input configuration
 input "type:touchpad" {
