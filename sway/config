@@ -28,21 +28,15 @@ client.background       #ffffff
 
 font $font
 
-set $bemenuflags --binding vim \
-  --prompt '' \
-  --fn '$font' \
-  --tb '#000000'  --tf '$accent' \
-  --fb '#000000'  --ff '$fg' \
-  --nb '#000000'  --nf '#AAAAAA' \
-  --ab '#000000'  --af '#AAAAAA' \
-  --sb '#000000'  --sf '$accent' \
-  --hb '$bg' --hf '$highlight'
+set $wofiflags -t foot \
+               -b \
+               -L 10
 
 set $bg_image ~/.images/bg.jpg
 set $lock_image ~/.images/lock.jpg
 
-set $menu cat ~/.config/programs | bemenu $bemenuflags | xargs swaymsg exec --
-set $allmenu bemenu-run --no-exec $bemenuflags | xargs swaymsg exec --
+set $menu cat ~/.config/programs | wofi --show dmenu $wofiflags | xargs swaymsg exec --
+set $allmenu wofi --show run --sort-order=alphabetical $wofiflags | xargs swaymsg exec --
 set $lock swaylock -f -i $lock_image
 
 default_border pixel 2
@@ -63,6 +57,7 @@ exec swayidle -w \
                 before-sleep '$lock'
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway XDG_SESSION_TYPE=wayland
 
 # xwayland disable
 
@@ -142,19 +137,14 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # Layout stuff:
-bindsym $mod+b splith
-bindsym $mod+v splitv
-
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+b splith
+# bindsym $mod+v splitv
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
 bindsym $mod+f fullscreen
-
 bindsym $mod+Shift+space floating toggle
-
 bindsym $mod+space focus mode_toggle
-
 bindsym $mod+a focus parent
 
 bindsym $mod+Shift+minus move scratchpad
@@ -202,5 +192,6 @@ bar {
 }
 
 for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
+for_window [urgent="latest"] focus
 
 include /etc/sway/config.d/*

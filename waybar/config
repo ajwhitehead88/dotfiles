@@ -81,7 +81,7 @@
     "custom/pacman": {
       "interval": 3600,
       "exec": "~/.config/waybar/pacman",
-      "on-click": "foot sudo paru -Syu; pkill -SIGRTMIN+8 waybar ",
+      "on-click": "foot sudo paru; pkill -SIGRTMIN+8 waybar ",
       "signal": 8
     }
 }

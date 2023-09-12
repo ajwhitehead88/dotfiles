@@ -94,6 +94,7 @@
 }
 
 /* Each critical module */
+#custom-pacman,
 #memory.critical,
 #cpu.critical,
 #temperature.critical,
