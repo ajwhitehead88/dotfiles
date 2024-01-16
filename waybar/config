@@ -77,11 +77,5 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-    "custom/pacman": {
-      "interval": 3600,
-      "exec": "~/.config/waybar/pacman",
-      "on-click": "foot sudo paru; pkill -SIGRTMIN+8 waybar ",
-      "signal": 8
     }
 }

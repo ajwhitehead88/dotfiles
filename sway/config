@@ -9,6 +9,9 @@ set $down j
 set $up k
 set $right l
 
+set $bigmove 50px
+set $smallmove 10px
+
 set $font pango:Roboto 11
 
 set $bg #353C4A
@@ -42,6 +45,7 @@ set $lock swaylock -f -i $lock_image
 default_border pixel 2
 default_floating_border normal
 hide_edge_borders smart
+focus_on_window_activation focus
 
 smart_gaps on
 gaps inner 10
@@ -84,6 +88,7 @@ bindsym $mod+Return exec foot
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+d exec $allmenu
+bindsym $mod+Semicolon exec wofi-emoji
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 bindsym $mod+x exec $lock
@@ -105,14 +110,14 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+$left move left $bigmove
+bindsym $mod+Shift+$down move down $bigmove
+bindsym $mod+Shift+$up move up $bigmove
+bindsym $mod+Shift+$right move right $bigmove
+bindsym $mod+Shift+Left move left $bigmove
+bindsym $mod+Shift+Down move down $bigmove
+bindsym $mod+Shift+Up move up $bigmove
+bindsym $mod+Shift+Right move right $bigmove
 
 # Workspaces:
 bindsym $mod+1 workspace number 1
@@ -152,14 +157,24 @@ bindsym $mod+minus scratchpad show
 
 # Resizing containers:
 mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym $left resize shrink width $bigmove
+    bindsym $down resize grow height $bigmove
+    bindsym $up resize shrink height $bigmove
+    bindsym $right resize grow width $bigmove
+    bindsym Left resize shrink width $bigmove
+    bindsym Down resize grow height $bigmove
+    bindsym Up resize shrink height $bigmove
+    bindsym Right resize grow width $bigmove
+
+    bindsym Shift+$left resize shrink width $smallmove
+    bindsym Shift+$down resize grow height $smallmove
+    bindsym Shift+$up resize shrink height $smallmove
+    bindsym Shift+$right resize grow width $smallmove
+    bindsym Shift+Left resize shrink width $smallmove
+    bindsym Shift+Down resize grow height $smallmove
+    bindsym Shift+Up resize shrink height $smallmove
+    bindsym Shift+Right resize grow width $smallmove
+
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -193,5 +208,6 @@ bar {
 
 for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
 for_window [urgent="latest"] focus
+for_window [app_id="^firefox$" title="^Extension: \(Bitwarden - Free Password Manager\) - Bitwarden — Mozilla Firefox$"] floating enable
 
 include /etc/sway/config.d/*
