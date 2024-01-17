@@ -1,9 +1,0 @@
-#!/bin/bash
-TOTAL=$(checkupdates | wc -l)
-
-if [ $TOTAL != 0 ]; then
-  echo "$TOTAL ";
-else
-  echo "";
-fi
-

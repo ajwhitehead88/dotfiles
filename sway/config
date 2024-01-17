@@ -38,7 +38,7 @@ set $wofiflags -t foot \
 set $bg_image ~/.images/bg.jpg
 set $lock_image ~/.images/lock.jpg
 
-set $menu cat ~/.config/programs | wofi --show dmenu $wofiflags | xargs swaymsg exec --
+set $menu cat ~/.config/programs | wofi --sort-order=default --show dmenu $wofiflags | xargs swaymsg exec --
 set $allmenu wofi --show run --sort-order=alphabetical $wofiflags | xargs swaymsg exec --
 set $lock swaylock -f -i $lock_image
 
