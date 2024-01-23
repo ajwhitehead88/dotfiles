@@ -31,15 +31,21 @@ client.background       #ffffff
 
 font $font
 
-set $wofiflags -t foot \
-               -b \
-               -L 10
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Nordic'
+    gsettings set $gnome-schema icon-theme 'Nordzy'
+    gsettings set $gnome-schema cursor-theme 'phinger-cursors'
+    # gsettings set $gnome-schema font-name 'Your font name'
+}
 
 set $bg_image ~/.images/bg.jpg
 set $lock_image ~/.images/lock.jpg
 
-set $menu cat ~/.config/programs | wofi --sort-order=default --show dmenu $wofiflags | xargs swaymsg exec --
-set $allmenu wofi --show run --sort-order=alphabetical $wofiflags | xargs swaymsg exec --
+set $menu cat ~/.config/programs | bemenu | xargs swaymsg exec --
+set $allmenu bemenu-run --no-exec | xargs swaymsg exec --
+
 set $lock swaylock -f -i $lock_image
 
 default_border pixel 2
@@ -88,7 +94,7 @@ bindsym $mod+Return exec foot
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+d exec $allmenu
-bindsym $mod+Semicolon exec wofi-emoji
+bindsym $mod+Semicolon exec bemoji -t
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 bindsym $mod+x exec $lock
