@@ -56,10 +56,13 @@ focus_on_window_activation focus
 smart_gaps on
 gaps inner 10
 
-exec mako
+# exec /usr/share/sway/scripts/autoname-workspaces.py
+exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.95
+exec wlsunset -l 53.4 -L 2.3 -t 3000
+# exec mako
 exec autotiling-rs
 exec slack --startup
-exec discord --start-minimized
+# exec discord --start-minimized
 exec swayidle -w \
                 timeout 300 '$lock' \
                 timeout 600 'swaymsg "output * dpms off"' \
@@ -214,6 +217,6 @@ bar {
 
 for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
 for_window [urgent="latest"] focus
-for_window [app_id="^firefox$" title="^Extension: \(Bitwarden - Free Password Manager\) - Bitwarden — Mozilla Firefox$"] floating enable
+for_window [app_id="^firefox$" title="Extension: \(Bitwarden Password Manager\) - Bitwarden — Mozilla Firefox$"] floating enable
 
 include /etc/sway/config.d/*

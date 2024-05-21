@@ -22,7 +22,8 @@
   },
   "sway/window": {
     "icon": true,
-    "icon-size": 21
+    "icon-size": 16,
+    "max-length": 100
   },
   "sway/scratchpad": {
     "format": "{icon} {count}",
@@ -32,12 +33,11 @@
     "tooltip-format": "{app}: {title}"
   },
   "tray": {
-    "icon-size": 21,
+    "icon-size": 18,
     "spacing": 10
   },
   "clock": {
-    "format-alt": "{:%Y-%m-%d}",
-    "tooltip-format": "<tt>{calendar}</tt>",
+    "tooltip-format": "<tt>{calendar}</tt>\n<small>{:%d/%m/%Y}</small>",
     "calendar": {
       "format": {
         "today": "<span background='#434C5E'><b><u>{}</u></b></span>"
