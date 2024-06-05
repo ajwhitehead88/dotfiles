@@ -69,9 +69,6 @@ exec swayidle -w \
                      resume 'swaymsg "output * dpms on"' \
                 before-sleep '$lock'
 
-exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway XDG_SESSION_TYPE=wayland
-
 # xwayland disable
 
 ### Output configuration
