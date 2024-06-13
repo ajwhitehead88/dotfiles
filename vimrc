@@ -18,7 +18,8 @@ if has('nvim')
   Plug 'neomake/neomake'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'mengelbrecht/lightline-bufferline'
-  Plug 'shaunsingh/nord.nvim'
+  "Plug 'shaunsingh/nord.nvim'
+  Plug 'ellisonleao/gruvbox.nvim'
 else
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'scrooloose/syntastic'
@@ -276,5 +277,5 @@ else
   set guifont=Hack:h10
 endif
 
-colorscheme nord
 set background=dark
+colorscheme gruvbox

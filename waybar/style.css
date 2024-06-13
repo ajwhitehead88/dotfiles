@@ -1,56 +1,42 @@
 
+/* -----------------------------------------------------------------------------
+ * Styles
+ * -------------------------------------------------------------------------- */
+
+/* COLORS */
+@define-color bg #1d2021;
+@define-color fg #ebdbb2;
+@define-color warning #fe8019;
+@define-color critical #fb4934;
+@define-color workspacesfocused #7c6f64;
+@define-color workspaces #282828;
+@define-color scratchpad #83a598;
+@define-color module #282828;
+@define-color mode #504945;
+@define-color date #504945;
+@define-color time #665c54;
+@define-color tray #7c6f64;
+
 @keyframes blink-warning {
   70% {
-    color: @light;
+    background-color: @module;
   }
 
   to {
-    color: @light;
     background-color: @warning;
   }
 }
 
 @keyframes blink-critical {
   70% {
-    color: @light;
+    background-color: @module;
   }
 
   to {
-    color: @light;
     background-color: @critical;
   }
 }
 
-
-/* -----------------------------------------------------------------------------
- * Styles
- * -------------------------------------------------------------------------- */
-
-/* COLORS */
-
-/* Nord */
-@define-color bg #353C4A;
-@define-color border #5e81ac;
-@define-color light #eceff4;
-@define-color dark #2e3440;
-@define-color warning #ebcb8b;
-@define-color critical #d08770;
-@define-color mode #4c566a;
-@define-color workspaces @bg;
-@define-color workspacesfocused #434C5E;
-@define-color scratchpad #88c0d0;
-@define-color tray #596A8D;
-@define-color module #3A4253;
-@define-color date #2e3440;
-@define-color time #46536A;
-
-/* @define-color network #5D7096;
-@define-color memory #546484;
-@define-color cpu #596A8D;
-@define-color temp #4D5C78;
-@define-color layout #5e81ac;
-@define-color battery #88c0d0;
-@define-color backlight #3F495D; */
 
 * {
   border: none;
@@ -63,7 +49,7 @@
 /* The whole bar */
 #waybar {
   background: @bg;
-  color: @light;
+  color: @fg;
   font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
@@ -77,7 +63,7 @@ label {
 }
 
 /* Each module */
-#mode,
+/*#mode,
 #scratchpad,
 #window,
 #custom-pacman,
@@ -89,7 +75,7 @@ label {
 #battery,
 #clock,
 #tray {
-}
+}*/
 
 /* Each module that should blink */
 #mode,
@@ -103,12 +89,11 @@ label {
 
 /* Each critical module */
 #systemd-failed-units,
-#custom-pacman,
 #memory.critical,
 #cpu.critical,
 #temperature.critical,
 #battery.critical {
-  color: @critical;
+  background-color: @critical;
 }
 
 /* Each critical that should blink */
@@ -140,13 +125,13 @@ label {
 
 /* left */
 #mode { /* Shown current Sway mode (resize etc.) */
-  color: @light;
+  color: @fg;
   background: @mode;
 }
 
 #workspaces button {
   font-weight: bold;
-  color: @light;
+  color: @fg;
   background: @workspaces;
 }
 
@@ -177,6 +162,10 @@ label {
 #temperature,
 #battery {
   background: @module;
+}
+
+#custom-pacman {
+  color: @critical;
 }
 
 #clock.date {
