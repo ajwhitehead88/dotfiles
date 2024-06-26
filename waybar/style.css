@@ -16,6 +16,8 @@
 @define-color date #504945;
 @define-color time #665c54;
 @define-color tray #7c6f64;
+@define-color mute #d65d0e;
+@define-color bluetooth #458588;
 
 @keyframes blink-warning {
   70% {
@@ -162,6 +164,16 @@ label {
 #temperature,
 #battery {
   background: @module;
+}
+
+#pulseaudio.bluetooth {
+  color: @bg;
+  background: @bluetooth;
+}
+
+#pulseaudio.muted {
+  color: @bg;
+  background: @mute;
 }
 
 #custom-pacman {
