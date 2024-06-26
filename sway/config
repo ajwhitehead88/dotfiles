@@ -14,31 +14,32 @@ set $smallmove 10px
 
 set $font pango:Roboto 11
 
-set $bg #353C4A
-set $fg #D8DEE9
-set $accent #4C5763
-set $highlight #5E81AC
-set $indicator #8FBCBB
+# Color binds
+set $col_focused #83a598
+set $col_focused_indicator #458588
+set $col_focused_inactive #a89984
+set $col_unfocused #928374
+set $col_text_dark #32302f
+set $col_text_light #d4be98
+set $col_urgent #cc241d
+set $col_unfocused_border #252423
 
-## class                border			backgr			text				indicator			child_border
-client.focused          $indicator	$accent			#ffffff			$indicator	 	$highlight
-client.focused_inactive $bg 				$bg 				$fg 				$indicator		$accent
-client.unfocused        $bg 				$bg 				$fg 				$indicator		$accent
-client.urgent           $bg 				$bg 				$fg 				$indicator		$accent
-client.placeholder      $bg 				$bg 				$fg 				$indicator		$accent
-
-client.background       #ffffff
+# class                  border                 background             text             indicator              child_border
+client.focused           $col_focused           $col_focused           $col_text_dark   $col_focused_indicator $col_focused
+client.focused_inactive  $col_focused_inactive  $col_focused_inactive  $col_text_dark   $col_focused_inactive  $col_focused_inactive
+client.unfocused         $col_unfocused_border  $col_unfocused         $col_text_light  $col_unfocused         $col_unfocused
+client.urgent            $col_text_dark         $col_urgent            $col_text_dark   $col_urgent
 
 font $font
 
-set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'Nordic'
-    gsettings set $gnome-schema icon-theme 'Nordzy'
-    gsettings set $gnome-schema cursor-theme 'phinger-cursors'
-    # gsettings set $gnome-schema font-name 'Your font name'
-}
+# set $gnome-schema org.gnome.desktop.interface
+#
+# exec_always {
+#   gsettings set $gnome-schema gtk-theme 'gruvbox-dark-gtk'
+#   gsettings set $gnome-schema icon-theme 'gruvbox-dark-icons-gtk'
+#   gsettings set $gnome-schema cursor-theme 'phinger-cursors'
+#   # gsettings set $gnome-schema font-name 'Your font name'
+# }
 
 set $bg_image ~/.images/bg.jpg
 set $lock_image ~/.images/lock.jpg
@@ -57,7 +58,7 @@ smart_gaps on
 gaps inner 10
 
 # exec /usr/share/sway/scripts/autoname-workspaces.py
-exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.95
+# exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.95
 exec wlsunset -l 53.4 -L 2.3 -t 3000
 # exec mako
 exec autotiling-rs
@@ -187,9 +188,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # FN Keys
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+# bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioPlay exec playerctl play-pause

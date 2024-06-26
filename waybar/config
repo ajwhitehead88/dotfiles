@@ -4,7 +4,7 @@
   "spacing": 4,
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
   "modules-center": ["sway/window"],
-  "modules-right": ["custom/pacman", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock", "tray"],
+  "modules-right": ["systemd-failed-units","custom/pacman", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock", "tray"],
   "custom/pacman": {
     "format": "{} ",
     "interval": 3600,
@@ -50,11 +50,12 @@
     "tooltip": false
   },
   "memory": {
-    "format": "{}% ",
+    "format": "{percentage}% ",
     "tooltip": false
   },
   "temperature": {
-    "critical-threshold": 80,
+    "critical-threshold": 90,
+    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
     "format": "{temperatureC}°C {icon}",
     "format-icons": ["", "", ""],
     "tooltip": false
@@ -82,10 +83,10 @@
   },
   "pulseaudio": {
     "scroll-step": 1,
-    "format": "{volume}% {icon} {format_source}",
-    "format-muted": "  {format_source}",
-    "format-bluetooth": "{volume}% {icon}   {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
+    "format": "{volume}% {icon}  {format_source}",
+    "format-muted": " {format_source}",
+    "format-bluetooth": " {volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "  {format_source}",
     "format-source": "",
     "format-source-muted": "",
     "format-icons": {
