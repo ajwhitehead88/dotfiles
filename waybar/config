@@ -4,7 +4,7 @@
   "spacing": 4,
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
   "modules-center": ["sway/window"],
-  "modules-right": ["systemd-failed-units","custom/pacman", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock", "tray"],
+  "modules-right": ["systemd-failed-units","custom/pacman", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "custom/weather", "clock", "tray"],
   "custom/pacman": {
     "format": "{} ",
     "interval": 3600,
@@ -15,7 +15,7 @@
   },
   "sway/workspaces": {
     "disable-scroll": true,
-    "all-outputs": true
+    "all-outputs": false
   },
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
@@ -55,7 +55,6 @@
   },
   "temperature": {
     "critical-threshold": 90,
-    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
     "format": "{temperatureC}°C {icon}",
     "format-icons": ["", "", ""],
     "tooltip": false
@@ -96,5 +95,12 @@
   },
   "systemd-failed-units": {
 	  "format": "✗ {nr_failed}"
+  },
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar",
+    "return-type": "json"
   }
 }
