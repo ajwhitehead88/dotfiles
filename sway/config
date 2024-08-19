@@ -91,15 +91,24 @@ bindsym $mod+Shift+d exec $allmenu
 bindsym $mod+Semicolon exec bemoji -t
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
-bindsym $mod+x exec $lock
+# bindsym $mod+x exec $lock
 
-set $swaynag 'You pressed the exit shortcut. Do you really want to exit sway? Yes (Return) or No (Escape).'
-mode $swaynag {
-  bindsym $mod+shift+e mode "default"
-	bindsym Return exit
-	bindsym Escape mode "default"
+# Exit
+set $exit "   [s]leep, [p]oweroff, [r]eboot, [l]ock, [e]xit"
+mode $exit {
+    bindsym --to-code {
+        s exec systemctl suspend, mode "default"
+        p exec systemctl poweroff
+        r exec systemctl reboot
+        l exec $lock, mode "default"
+        e exec swaymsg exit
+
+        Return mode "default"
+        Escape mode "default"
+        $mod+shift+e mode "default"
+    }
 }
-bindsym $mod+shift+e mode $swaynag
+bindsym --to-code $mod+shift+e  mode $exit
 
 # Moving around:
 bindsym $mod+$left focus left
