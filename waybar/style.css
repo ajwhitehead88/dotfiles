@@ -20,7 +20,7 @@
 @define-color bluetooth #458588;
 
 @keyframes blink-warning {
-  70% {
+  50% {
     background-color: @module;
   }
 
@@ -30,7 +30,7 @@
 }
 
 @keyframes blink-critical {
-  70% {
+  50% {
     background-color: @module;
   }
 
@@ -106,6 +106,10 @@ label {
 #battery.critical.discharging {
   animation-name: blink-critical;
   animation-duration: 2s;
+}
+
+#mode {
+  animation-duration: 1s;
 }
 
 /* Each warning */

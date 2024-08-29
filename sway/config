@@ -48,8 +48,7 @@ focus_on_window_activation focus
 smart_gaps on
 gaps inner 10
 
-# exec /usr/share/sway/scripts/autoname-workspaces.py
-exec /usr/share/sway/inactive-windows-transparency.py -o 0.95
+exec /usr/share/sway-contrib/inactive-windows-transparency.py -o 0.95
 exec wlsunset -l 53.4 -L 2.3 -t 3000
 exec autotiling-rs
 exec slack --startup
@@ -64,10 +63,20 @@ exec swayidle -w \
 
 ### Output configuration
 output * bg $bg_image fill
-output eDP-1 scale 1.25
+
+output eDP-1 {
+  scale 1.25
+}
+
 output Unknown-1 disable
-# output DP-2 adaptive_sync off
-# output DP-3 adaptive_sync off
+
+output DP-2 {
+  adaptive_sync off
+}
+
+output DP-3 {
+  adaptive_sync off
+}
 
 ### Input configuration
 input "type:touchpad" {
