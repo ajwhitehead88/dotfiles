@@ -8,6 +8,7 @@
 @define-color fg #ebdbb2;
 @define-color warning #fe8019;
 @define-color critical #fb4934;
+@define-color info #458588;
 @define-color workspacesfocused #7c6f64;
 @define-color workspaces #282828;
 @define-color scratchpad #83a598;
@@ -36,6 +37,16 @@
 
   to {
     background-color: @critical;
+  }
+}
+
+@keyframes blink-info {
+  50% {
+    background-color: @fg;
+  }
+
+  to {
+    background-color: @info;
   }
 }
 
@@ -80,7 +91,11 @@ label {
 }*/
 
 /* Each module that should blink */
+#custom-notification,
+#systemd-failed-units,
 #mode,
+#network,
+#cpu,
 #memory,
 #temperature,
 #battery {
@@ -125,6 +140,11 @@ label {
 #battery.warning.discharging {
   animation-name: blink-warning;
   animation-duration: 3s;
+}
+
+#custom-notification.notification {
+  animation-name: blink-info;
+  animation-duration: 1s;
 }
 
 /* And now modules themselves in their respective order */
@@ -195,4 +215,9 @@ label {
 
 #tray {
   background: @tray;
+}
+
+#custom-notification {
+  background: @fg;
+  color: @bg;
 }
