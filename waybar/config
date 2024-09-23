@@ -40,7 +40,7 @@
     "tooltip-format": "<tt>{calendar}</tt>\n<small>{:%d/%m/%Y}</small>",
     "calendar": {
       "format": {
-        "today": "<span background='#434C5E'><b><u>{}</u></b></span>"
+        "today": "<b><u>{}</u></b>"
       }
     }
   },
