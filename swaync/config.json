@@ -18,7 +18,7 @@
   "timeout": 10,
   "timeout-low": 5,
   "timeout-critical": 0,
-  "fit-to-screen": false,
+  "fit-to-screen": true,
   "relative-timestamps": true,
   "control-center-width": 500,
   "control-center-height": 300,
@@ -26,19 +26,10 @@
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
   "transition-time": 200,
-  "hide-on-clear": false,
+  "hide-on-clear": true,
   "hide-on-action": true,
   "script-fail-notify": true,
   "scripts": {
-    "example-script": {
-      "exec": "echo 'Do something...'",
-      "urgency": "Normal"
-    },
-    "example-action-script": {
-      "exec": "echo 'Do something actionable!'",
-      "urgency": "Normal",
-      "run-on": "action"
-    }
   },
   "notification-visibility": {
     "spotify": {
@@ -67,24 +58,8 @@
     "dnd": {
       "text": "Do Not Disturb"
     },
-    "label": {
-      "max-lines": 5,
-      "text": "Label Text"
-    },
-    "mpris": {
-      "image-size": 96,
-      "image-radius": 12
-    },
     "buttons-grid": {
-      "actions": [
-        {
-          "label": "直",
-          "type": "toggle",
-          "active": true,
-          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
-          "update_command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
-        }
-      ]
+      "actions": []
     }
   }
 }
