@@ -80,6 +80,11 @@ output DP-3 {
 }
 
 ### Input configuration
+input "type:pointer" {
+    accel_profile "flat"
+    pointer_accel 1.0
+}
+
 input "type:touchpad" {
     dwt enabled
     tap enabled
