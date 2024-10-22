@@ -4,7 +4,7 @@
   "spacing": 4,
   "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
   "modules-center": ["sway/window"],
-  "modules-right": ["systemd-failed-units","custom/pacman", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "custom/weather", "clock", "tray", "custom/notification"],
+  "modules-right": ["mpris", "systemd-failed-units","custom/pacman", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "custom/weather", "clock", "tray", "custom/notification"],
   "custom/pacman": {
     "format": "{} ",
     "interval": 3600,
@@ -122,5 +122,12 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+  "mpris": {
+    "format": "{status_icon} {artist} - {title}",
+    "status-icons": {
+      "playing": "▶",
+      "paused": "⏸"
+    }
   }
 }

@@ -40,8 +40,7 @@
 #waybar {
   background: @theme_bg_color;
   color: @theme_fg_color;
-  font-family: Roboto, sans-serif;
-  /*font-family: Hack Nerd Font;*/
+  font-family: Roboto, "Font Awesome 6 Free";
   font-size: 14px;
 }
 
@@ -125,12 +124,6 @@ label {
 
 #scratchpad{
   background: @theme_base_color;
-}
-
-
-/* middle */
- #window {
-  padding: 0;
 }
 
 /* right */
