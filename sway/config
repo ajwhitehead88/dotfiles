@@ -51,7 +51,7 @@ gaps inner 10
 exec /usr/share/sway-contrib/inactive-windows-transparency.py -o 0.95
 exec wlsunset -l 53.4 -L 2.3 -t 3000
 exec autotiling-rs
-exec slack --startup
+# exec slack --startup
 # exec discord --start-minimized
 exec swayidle -w \
                 timeout 300 '$lock' \
@@ -59,6 +59,7 @@ exec swayidle -w \
                      resume 'swaymsg "output * dpms on"' \
                 before-sleep '$lock'
 exec swaync
+exec sway-audio-idle-inhibit
 
 # xwayland disable
 
@@ -228,7 +229,6 @@ bindsym XF86AudioMedia exec systemctl suspend
 # Toggle control center
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
-
 # Status Bar:
 bar {
     swaybar_command waybar
@@ -237,5 +237,7 @@ bar {
 for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
 for_window [urgent="latest"] focus
 for_window [app_id="^firefox$" title="Extension: \(Bitwarden Password Manager\) - Bitwarden — Mozilla Firefox$"] floating enable
+
+# for_window [app_id="firefox"] inhibit_idle fullscreen
 
 include /etc/sway/config.d/*
