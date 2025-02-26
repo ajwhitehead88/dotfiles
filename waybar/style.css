@@ -122,8 +122,18 @@ label {
 }
 
 
-#scratchpad{
+#scratchpad {
   background: @theme_base_color;
+}
+
+#window {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#window label {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* right */

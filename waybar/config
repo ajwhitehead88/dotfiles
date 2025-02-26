@@ -2,8 +2,8 @@
 {
   "position": "bottom",
   "spacing": 4,
-  "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-  "modules-center": ["sway/window"],
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "sway/window"],
+  "modules-center": [],
   "modules-right": ["mpris", "systemd-failed-units","custom/pacman", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "custom/weather", "clock", "tray", "custom/notification"],
   "custom/pacman": {
     "format": "{} ",
