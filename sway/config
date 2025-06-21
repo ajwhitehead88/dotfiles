@@ -48,7 +48,7 @@ focus_on_window_activation focus
 smart_gaps on
 gaps inner 10
 
-exec /usr/share/sway-contrib/inactive-windows-transparency.py -o 0.95
+# exec /usr/share/sway-contrib/inactive-windows-transparency.py -o 0.95
 exec wlsunset -l 53.4 -L 2.3 -t 3000
 exec autotiling-rs
 # exec slack --startup
@@ -91,6 +91,7 @@ input "type:touchpad" {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
+    drag_lock disabled
     scroll_factor 0.5
 }
 
