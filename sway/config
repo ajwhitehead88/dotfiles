@@ -51,8 +51,7 @@ gaps inner 10
 # exec /usr/share/sway-contrib/inactive-windows-transparency.py -o 0.95
 exec wlsunset -l 53.4 -L 2.3 -t 3000
 exec autotiling-rs
-# exec slack --startup
-# exec discord --start-minimized
+exec slack --startup
 exec swayidle -w \
                 timeout 300 '$lock' \
                 timeout 600 'swaymsg "output * dpms off"' \
