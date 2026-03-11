@@ -57,7 +57,7 @@ exec swayidle -w \
                 timeout 600 'swaymsg "output * dpms off"' \
                      resume 'swaymsg "output * dpms on"' \
                 before-sleep '$lock'
-exec swaync
+# exec swaync
 exec sway-audio-idle-inhibit
 
 # xwayland disable
