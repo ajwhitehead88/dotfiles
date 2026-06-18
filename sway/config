@@ -104,7 +104,7 @@ bindsym $mod+Return exec foot
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+d exec $allmenu
-bindsym $mod+Semicolon exec bemoji -t
+bindsym $mod+Semicolon exec rofimoji
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 # bindsym $mod+x exec $lock
