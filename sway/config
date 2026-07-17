@@ -57,7 +57,6 @@ exec swayidle -w \
                 timeout 600 'swaymsg "output * dpms off"' \
                      resume 'swaymsg "output * dpms on"' \
                 before-sleep '$lock'
-# exec swaync
 exec sway-audio-idle-inhibit
 
 # xwayland disable
@@ -66,7 +65,7 @@ exec sway-audio-idle-inhibit
 output * bg $bg_image fill
 
 output eDP-1 {
-  scale 1.25
+  scale 1
 }
 
 output Unknown-1 disable

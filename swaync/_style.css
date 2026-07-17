@@ -4,6 +4,7 @@
 
 *{
 	font-family: JetBrains Nerd Font;
+  font-size: 16px;
 }
 
 @define-color cc-bg rgba(40, 40, 40, 1);

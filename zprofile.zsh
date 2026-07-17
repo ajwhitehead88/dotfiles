@@ -4,7 +4,7 @@ bemenu_components=(
   "-W 0.25"
   "-c"
   "--prompt ''"
-  "--fn 'pango:Roboto 11'"
+  "--fn 'pango:Roboto 12'"
   "--tb '#282828'"
   "--tf '#458588'"
   "--fb '#282828'"

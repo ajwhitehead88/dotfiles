@@ -10,7 +10,7 @@
     "interval": 3600,
     "exec": "checkupdates | wc -l",
     "exec-if": "checkupdates",
-    "on-click": "foot -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar",
+    "on-click": "foot -e 'paru'; pkill -SIGRTMIN+8 waybar",
     "signal": 8
   },
   "sway/workspaces": {
