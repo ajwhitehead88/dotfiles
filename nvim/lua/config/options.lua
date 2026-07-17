@@ -1,0 +1,33 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.cursorline = true
+vim.opt.expandtab = true
+vim.opt.ignorecase = true
+vim.opt.laststatus = 2
+vim.opt.linebreak = true
+vim.opt.mouse = 'a'
+vim.opt.number = true
+vim.opt.pumblend = 10
+vim.opt.pumheight = 10
+vim.opt.relativenumber = true
+vim.opt.ruler = true
+vim.opt.scrolloff = 4
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 2
+vim.opt.showmode = false
+vim.opt.sidescrolloff = 8
+vim.opt.signcolumn = 'yes'
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.smoothscroll = true
+vim.opt.splitbelow = true
+vim.opt.splitkeep = 'screen'
+vim.opt.splitright = true
+vim.opt.tabstop = 2
+vim.opt.termguicolors = true
+vim.opt.updatetime = 200
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wrap = false
+
