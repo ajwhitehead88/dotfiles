@@ -23,21 +23,11 @@ return {
     end, 
   },
   {
-    "brenoprata10/nvim-highlight-colors",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      render = "background",
-    },
-  },
-  {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true,
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     opts = {},
-  },
-  {
-    "kylechui/nvim-surround",
-    event = "VeryLazy",
-    opts = {},
+    init = function()
+      vim.g.no_plugin_maps = true
+    end,
   },
 }
