@@ -33,15 +33,17 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      "nvim-tree/nvim-web-devicons",
     },
     cmd = 'Telescope',
     keys = {
-      { '<leader>fp', '<cmd>Telescope oldfiles<cr>', desc = 'Recently opened files' },
-      { '<leader>fg', '<cmd>Telescope git_files<cr>', desc = 'Find repository files' },
-      { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Find files' },
-      { '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'Live grep' },
-      { '<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'Find buffers' },
-      { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Help tags' },
+      { '<leader>fp', '<cmd>Telescope oldfiles<cr>',             desc = 'Recently opened files' },
+      { '<leader>fg', '<cmd>Telescope git_files<cr>',            desc = 'Find repository files' },
+      { '<leader>ff', '<cmd>Telescope find_files<cr>',           desc = 'Find files' },
+      { '<leader>fg', '<cmd>Telescope live_grep<cr>',            desc = 'Live grep' },
+      { "<leader>fw", "<cmd>Telescope grep_string<cr>",          desc = "Live grep word under cursor" },
+      { '<leader>fb', '<cmd>Telescope buffers<cr>',              desc = 'Find buffers' },
+      { '<leader>fh', '<cmd>Telescope help_tags<cr>',            desc = 'Help tags' },
       { '<leader>ft', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Document symbols' },
     },
     config = function()
@@ -63,14 +65,54 @@ return {
     cmd = "Trouble",
     opts = {},
     keys = {
-      { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
-      { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
-      { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
-      { "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP references/defs (Trouble)" },
-      { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
-      { "]d", function() require("trouble").next({ skip_groups = true, jump = true }) end, desc = "Next diagnostic" },
-      { "[d", function() require("trouble").prev({ skip_groups = true, jump = true }) end, desc = "Prev diagnostic" },
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc =
+        "Diagnostics (Trouble)"
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc =
+        "Buffer Diagnostics (Trouble)"
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc =
+        "Symbols (Trouble)"
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc =
+        "LSP references/defs (Trouble)"
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc =
+        "Location List (Trouble)"
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc =
+        "Quickfix List (Trouble)"
+      },
+      {
+        "]d",
+        function() require("trouble").next({ skip_groups = true, jump = true }) end,
+        desc =
+        "Next diagnostic"
+      },
+      {
+        "[d",
+        function() require("trouble").prev({ skip_groups = true, jump = true }) end,
+        desc =
+        "Prev diagnostic"
+      },
     },
   },
   {
@@ -87,7 +129,11 @@ return {
     event = "VeryLazy",
     opts = {},
     keys = {
-      { "<leader>?", function() require("which-key").show({ global = false }) end, desc = "Buffer Local Keymaps (which-key)", },
+      {
+        "<leader>?",
+        function() require("which-key").show({ global = false }) end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
     },
   }
 }
