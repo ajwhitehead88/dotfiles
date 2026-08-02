@@ -12,7 +12,15 @@ return {
     },
     config = function()
       require("nvim-treesitter").install({
-        "tsx", "vue", "html", "css", "javascript", "typescript", "astro",
+        "bash",
+        "yaml",
+        "tsx",
+        "vue",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "astro",
       })
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "typescript", "typescriptreact", "vue", "html", "css", "javascript", "astro" },
