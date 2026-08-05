@@ -43,7 +43,7 @@
   font-size: 16px;
 }
 
-box#tray,
+#tray,
 label {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -147,15 +147,15 @@ label {
   background: @insensitive_bg_color;
 }
 
-/*#pulseaudio.bluetooth {
-  background: @link_color;
-}*/
 #pulseaudio {
   background: shade(@theme_selected_bg_color, 0.7);
 }
 
+#pulseaudio.bluetooth {
+  background: @link_color;
+}
+
 #pulseaudio.muted {
-  /*background: shade(@error_color, 0.5);*/
   background: @insensitive_bg_color;
 }
 
