@@ -12,7 +12,7 @@ set $right l
 set $bigmove 50px
 set $smallmove 10px
 
-set $font pango:Roboto 11
+set $font pango:Roboto 12
 
 # Color binds
 set $col_focused #83a598
@@ -33,30 +33,45 @@ client.urgent            $col_text_dark         $col_urgent            $col_text
 font $font
 
 set $bg_image ~/.images/bg.jpg
-set $lock_image ~/.images/lock.jpg
 
-set $menu cat ~/.config/programs | bemenu | xargs swaymsg exec --
-set $allmenu bemenu-run --no-exec | xargs swaymsg exec --
+set $menuargs -i \
+  -l 10 \
+  -W 0.20 \
+  -c \
+  --prompt ' ' \
+  --fn '$font' \
+  --tb '$col_text_dark' \
+  --tf '$col_focused_indicator' \
+  --fb '$col_text_dark' \
+  --ff '$col_text_light' \
+  --nb '$col_text_dark' \
+  --nf '$col_text_light' \
+  --ab '$col_text_dark' \
+  --af '$col_text_light' \
+  --sb '$col_focused' \
+  --sf '$col_text_dark' \
+  --hb '$col_unfocused' \
+  --hf '$col_text_light' \
+  -B 2 \
+  -R 2 \
+  --bdr '$col_focused'
 
-set $lock swaylock -f -i $lock_image
+set $menu cat ~/.config/programs | bemenu $menuargs | xargs swaymsg exec --
+set $allmenu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
 
 default_border pixel 2
 default_floating_border normal
-hide_edge_borders smart
+# hide_edge_borders smart
 focus_on_window_activation focus
 
-smart_gaps on
+# smart_gaps on
 gaps inner 10
 
 # exec /usr/share/sway-contrib/inactive-windows-transparency.py -o 0.95
 exec wlsunset -l 53.4 -L 2.3 -t 3000
 exec autotiling-rs
 exec slack --startup
-exec swayidle -w \
-                timeout 300 '$lock' \
-                timeout 600 'swaymsg "output * dpms off"' \
-                     resume 'swaymsg "output * dpms on"' \
-                before-sleep '$lock'
+exec swayidle -w
 exec sway-audio-idle-inhibit
 
 # xwayland disable
@@ -103,7 +118,7 @@ bindsym $mod+Return exec foot
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+d exec $allmenu
-bindsym $mod+Semicolon exec rofimoji
+bindsym $mod+Semicolon exec rofimoji --selector bemenu --selector-args="$menuargs -l 10"
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 # bindsym $mod+x exec $lock
