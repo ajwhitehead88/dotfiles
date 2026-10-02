@@ -4,14 +4,14 @@ if [ -f ${HOME}/.zplug/init.zsh ]; then
     source ${HOME}/.zplug/init.zsh
 fi
 
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug 'zplug/zplug', hook-build:'zplug --self-manage', at: 'main'
 zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-autosuggestions'
 # zplug 'marlonrichert/zsh-autocomplete'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug "woefe/git-prompt.zsh"
-# zplug "g-plane/pnpm-shell-completion", hook-build:"./zplug.zsh", defer:2
+zplug "g-plane/pnpm-shell-completion", hook-build:"./zplug.zsh", defer:2
 
 # install any uninstalled plugins
 zplug check || zplug install
