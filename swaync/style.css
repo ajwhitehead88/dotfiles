@@ -1,0 +1,7 @@
+/*
+ * vim: ft=less
+ */
+
+.blank-window {
+  background: alpha(black, 0.25);
+}

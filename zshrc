@@ -20,6 +20,7 @@ zplug load
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # exports
 export EDITOR=nvim
@@ -124,6 +125,9 @@ autoload -U colors && colors
 
 # prompt
 RPROMPT='$(gitprompt)'
-
-PROMPT='%{$fg_bold[red]%}%m %{$fg[yellow]%}%~%{$fg_bold[white]%}> %{$reset_color%}'
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [[ -n "$SSH_CONNECTION" ]]; then
+  prompt_host_color='%{$fg_bold[red]%}'
+else
+  prompt_host_color='%{$fg_bold[green]%}'
+fi
+PROMPT="${prompt_host_color}%m %{$fg[yellow]%}%~%{$fg_bold[white]%}> %{$reset_color%}"

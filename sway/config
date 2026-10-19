@@ -73,6 +73,7 @@ exec autotiling-rs
 exec slack --startup
 exec swayidle -w
 exec sway-audio-idle-inhibit
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # xwayland disable
 
@@ -130,7 +131,7 @@ mode $exit {
         s exec systemctl suspend, mode "default"
         p exec systemctl poweroff
         r exec systemctl reboot
-        l exec $lock, mode "default"
+        l exec swaylock -f, mode "default"
         e exec swaymsg exit
 
         Return mode "default"

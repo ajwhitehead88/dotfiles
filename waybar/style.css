@@ -137,6 +137,7 @@ label {
 
 /* right */
 #custom-pacman,
+#custom-wireguard,
 #custom-weather,
 #pulseaudio,
 #network,
@@ -177,6 +178,7 @@ label {
   color: @theme_text_color;
 }
 
+#custom-wireguard.connected,
 #custom-notification.notification {
   background: shade(@success_color, 0.8);
   color: shade(@success_color, 1.8);
