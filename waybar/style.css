@@ -137,7 +137,7 @@ label {
 
 /* right */
 #custom-pacman,
-#custom-wireguard,
+#custom-vpn,
 #custom-weather,
 #pulseaudio,
 #network,
@@ -152,12 +152,24 @@ label {
   background: shade(@theme_selected_bg_color, 0.7);
 }
 
+#custom-vpn.connecting,
 #pulseaudio.bluetooth {
   background: @link_color;
 }
 
 #pulseaudio.muted {
   background: @insensitive_bg_color;
+}
+
+#custom-notification {
+  background: @theme_selected_bg_color;
+  color: @theme_text_color;
+}
+
+#custom-vpn.connected,
+#custom-notification.notification {
+  background: shade(@success_color, 0.8);
+  color: shade(@success_color, 1.8);
 }
 
 #custom-pacman {
@@ -173,14 +185,6 @@ label {
   background: @theme_selected_bg_color;
 }
 
-#custom-notification {
-  background: @theme_selected_bg_color;
-  color: @theme_text_color;
-}
-
-#custom-wireguard.connected,
 #custom-notification.notification {
-  background: shade(@success_color, 0.8);
-  color: shade(@success_color, 1.8);
   animation-name: blink-success;
 }

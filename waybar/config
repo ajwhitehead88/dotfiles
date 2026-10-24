@@ -14,7 +14,7 @@
     "systemd-failed-units",
     "custom/pacman",
     "pulseaudio",
-    "custom/wireguard",
+    "custom/vpn",
     "network",
     "cpu",
     "memory",
@@ -32,12 +32,12 @@
     "on-click": "foot 'sudo' 'pacman' '-Syu'; pkill -SIGRTMIN+8 waybar",
     "signal": 8
   },
-  "custom/wireguard": {
-    "exec": "~/.config/waybar/scripts/wireguard.sh",
+  "custom/vpn": {
+    "exec": "~/.config/waybar/scripts/vpn.sh",
     "return-type": "json",
     "signal": 8,
     "interval": 30,
-    "on-click": "~/.config/waybar/scripts/wireguard-toggle.sh"
+    "on-click": "~/.config/waybar/scripts/vpn-toggle.sh"
   },
   "sway/workspaces": {
     "disable-scroll": true,
